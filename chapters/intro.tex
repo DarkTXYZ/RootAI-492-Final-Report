@@ -31,14 +31,16 @@ This project aims to create an artificial intelligence (AI) system capable of pl
 \end{itemize}
 
 \section{\ifenglish Project scope\else ขอบเขตของโครงงาน\fi}
-
-The project is a software consisting of two main component: 1.) \textit{\RootOurs{}}, a minimal version of \RootV{}. 2.) \textit{\RootAI{}}, the AI agent training lifecycle for \RootOurs{}. The scope of the project are as follows:
+% TODO: should i use AI agent training wrapper? training framework? training lifecycle?
+The project is a software consisting of two main components: 1.) \textit{\RootOurs{}}, a minimal version of \RootV{}. 2.) \textit{\RootAI{}}, an AI agent training framework for \RootOurs{}. The scope of the project are as follows:
 \begin{enumerate}
-    \item Exclude direct integration with \RootV{}, i.e., no pulling data via code from a running video game, and no injecting decision via code to a running video game.
-    \item Exclude direct integration with \RootB{}, i.e., no computer vision will be used to detect the state of the board game, and no mechanical arm will be used to move board game pieces.
+    \item Implementation of \RootOurs{}.
+    \item Implementation of \RootAI{}.
+    \item Exclude direct integration with \RootV{}, i.e., no pulling data from a running \RootV{}, and no injecting decision to a running \RootV{} via code.
+    \item Exclude direct integration with \RootB{}, i.e., no computer vision will be used to detect the state of the board game.
 \end{enumerate}
 
-\RootOurs{} must support the rules of Root [\ref{brief-rules-of-root}] in the scenario of \Marquise{} versus \Eyrie{}. Game mechanics not used by these two factions are not included. The scope of \RootOurs{} are as follows:
+\RootOurs{} supports the rules of Root [\ref{brief-rules-of-root}] in the scenario of \Marquise{} versus \Eyrie{}. Game mechanics not used by these two factions are not included. The scope of \RootOurs{} are as follows:
 \begin{enumerate}
     \item Only \Marquise{} and \Eyrie{} factions.
     \item Only "Woodland" map.
@@ -48,6 +50,19 @@ The project is a software consisting of two main component: 1.) \textit{\RootOur
     \item \Marquise{} starts with their three starting buildings pre-placed.
     \item \Eyrie{} starts with a \textit{roost} in the top left clearing.
     \item \Eyrie{} starts with the \textit{charismatic} leader.
+\end{enumerate}
+
+\RootAI{} has the following features:
+\begin{enumerate}
+    \item Importing and exporting of \RootOurs{}'s game state.
+    \item Exporting of \RootOurs{}'s log.
+    \item Interface for human interaction to an instance of \RootOurs{}.
+    \item Training and running AI agents built using the following methods:
+    \begin{itemize}
+        \item Random decision
+        \item Monte Carlo tree search (MCTS)
+        \item Reinforcement learning neural network
+    \end{itemize}
 \end{enumerate}
 
 \subsection{\ifenglish Hardware scope\else ขอบเขตด้านฮาร์ดแวร์\fi}

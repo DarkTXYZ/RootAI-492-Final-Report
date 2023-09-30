@@ -65,34 +65,65 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
     \end{itemize}
 \end{enumerate}
 
-\subsection{\ifenglish Hardware scope\else ขอบเขตด้านฮาร์ดแวร์\fi}
+% \subsection{\ifenglish Hardware scope\else ขอบเขตด้านฮาร์ดแวร์\fi}
 
-\subsection{\ifenglish Software scope\else ขอบเขตด้านซอฟต์แวร์\fi}
+% \subsection{\ifenglish Software scope\else ขอบเขตด้านซอฟต์แวร์\fi}
 
 \section{\ifenglish Expected outcomes\else ประโยชน์ที่ได้รับ\fi}
+\begin{itemize}
+    \item The resulting AIs are able to win against \RootV{}'s corresponding opponent faction AI, i.e.:
+    \begin{itemize}
+        \item Resulting \Marquise{} AI have higher win rate against \RootV{}'s \Eyrie{} AI.
+        \item Resulting \Eyrie{} AI have higher win rate against \RootV{}'s \Marquise{} AI.
+    \item Root players have a more challenging opponent when playing by themselves.
+    \end{itemize}
+\end{itemize}
 
 \section{\ifenglish Technology and tools\else เทคโนโลยีและเครื่องมือที่ใช้\fi}
+Python is chosen as the language for this project's implementation due to its flexibility of integrating with AI related libraries such as PyTorch and Tensorflow. 
 
 \subsection{\ifenglish Hardware technology\else เทคโนโลยีด้านฮาร์ดแวร์\fi}
+\textit{Maybe add the gpu use and cloud use in the future}
 
 \subsection{\ifenglish Software technology\else เทคโนโลยีด้านซอฟต์แวร์\fi}
+%% TODO: add citations to each item's docs
+% there are more
+\textbf{Programming Languages:}
+\begin{itemize}
+    \item Python
+\end{itemize}
+% there are more
+\textbf{Important Libraries:}
+\begin{itemize}
+    \item Pygame (UI) 
+    \item PyTorch (RLNN)
+    \item TensorFlow (RLNN)
+\end{itemize}
 
 \section{\ifenglish Project plan\else แผนการดำเนินงาน\fi}
 
-\begin{plan}{6}{2020}{2}{2021}
-    \planitem{7}{2020}{8}{2020}{ศึกษาค้นคว้า}
-    \planitem{8}{2020}{1}{2021}{ชิล}
-    \planitem{2}{2021}{2}{2021}{เผา}
-    \planitem{12}{2019}{1}{2022}{ทดสอบ}
+\begin{plan}{6}{2023}{3}{2024}
+    \planitem{6}{2023}{1}{2024}{\RootOurs{} implementation}
+    \planitem{10}{2023}{10}{2023}{Agent:\textbf{Random}: Implementation}
+    \planitem{10}{2023}{10}{2023}{Agent:\textbf{Random}: Simulation}
+    \planitem{10}{2023}{10}{2023}{Agent:\textbf{Random}: Analysis and Documentation}
+    \planitem{11}{2023}{1}{2024}{Agent:\textbf{MCTS}: Implementation}
+    \planitem{12}{2023}{1}{2024}{Agent:\textbf{MCTS}: Simulation}
+    \planitem{1}{2024}{1}{2024}{Agent:\textbf{MCTS}: Analysis and Documentation}
+    \planitem{1}{2024}{3}{2024}{Agent:\textbf{RLNN}: Implementation}
+    \planitem{2}{2024}{3}{2024}{Agent:\textbf{RLNN}: Simulation}
+    \planitem{3}{2024}{3}{2024}{Agent:\textbf{RLNN}: Analysis and Documentation}
+    \planitem{3}{2024}{3}{2024}{Document Finalization}
 \end{plan}
 
 \section{\ifenglish Roles and responsibilities\else บทบาทและความรับผิดชอบ\fi}
-อธิบายว่าในการทำงาน นศ. มีการกำหนดบทบาทและแบ่งหน้าที่งานอย่างไรในการทำงาน จำเป็นต้องใช้ความรู้ใดในการทำงานบ้าง
+In \RootOurs{}, base classes and faction-neutral functions are divided equally among the two of us. Pawaret is responsible for \Marquise{} related functionalities. Baangkok is responsible for \Eyrie{} related functionalities.
+
+In \RootAI{}, each step is divided equally, starting from method research to implementation to testing. This allows us to continuously exchange our knowledge about the current AI agent implementation method, allowing us to create and improve each AI agent to have good performance.
 
 \section{\ifenglish%
 Impacts of this project on society, health, safety, legal, and cultural issues
 \else%
 ผลกระทบด้านสังคม สุขภาพ ความปลอดภัย กฎหมาย และวัฒนธรรม
 \fi}
-
-แนวทางและโยชน์ในการประยุกต์ใช้งานโครงงานกับงานในด้านอื่นๆ รวมถึงผลกระทบในด้านสังคมและสิ่งแวดล้อมจากการใช้ความรู้ทางวิศวกรรมที่ได้
+This project can work as a foundation for future researches on reinforcement learning, asymmetrical games, game AI, and other related topics.

@@ -4,7 +4,17 @@ In order to create the AI, we first need to implement \RootOurs{}. This requires
 
 Next step is to implement \RootAI{}, the framework for running \RootOurs{} and training AI agents. There are two AI agent implementation methods that requires additional self study: Monte Carlo tree search and reinforcement learning neural network.
 
-\section{Brief Rules of Root} \label{brief-rules-of-root}
+\section{Root}
+\subsection{Game Theory}
+Root is an \textbf{asymetric game}: a game where each player starts with different setups, gameplay mechanics, etc. Although Root's base actions such as move and battle are the same for every faction, each faction starts differently and each has their own unique mechanics and rules. Thus, Root sits closer towards the asymmetric side in the symmetric--asymmetric spectrum.\\  
+Example of symmetric games are Chess, Monopoly, Prisoner's Dilemma, etc.\\ 
+Example of other asymmetric games are Tapestry, Dune, Cthulhu Wars, etc.
+
+Root is an \textbf{imperfect information game}: a game where there are information hidden from the player. Most elements of Root such as, warrior placement, building count, etc. are laid out for all players to see. But cards on the player's hand are only visible to that player, i.e., other player's cards in hand are the hidden information in this game.
+
+Root is a \textbf{non-deterministic}: a game where there's some element of randomness involved, such as rolling dice or shuffling cards. Root has both, rolling dice in battle, and drawing cards from a shuffled draw-pile.
+
+\subsection{Brief Rules of Root} \label{brief-rules-of-root}
 Root is a 2-4 player turn-based game, where you play as one of the four factions, fighting against other factions to be the ruler of woodland.
 
 The rule is simple: the player who gets 30 victory points or plays and completes the dominance card (the card that change the endgame winning condition) first wins. The players play on the map of Woodland (Fig 2.1), which contains 12 clearings, each with different suits and different number of slots for building. There are also paths that connect those clearings for moving warriors from one to another clearing.
@@ -97,7 +107,7 @@ Some of the rules will not be explained here, as they are not crucial and essent
   % \end{landscape}
 % }
 
-\section{Rule difference of \RootV{} and \RootB{}} % TODO: Tee
+\subsection{Rule difference of \RootV{} and \RootB{}} % TODO: Tee
 
 \section{Monte Carlo tree search} % TODO: BK
 

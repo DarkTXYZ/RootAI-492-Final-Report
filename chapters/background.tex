@@ -5,7 +5,15 @@
 \section{Brief Rules of Root} \label{brief-rules-of-root}
 Root is a 2-4 player turn-based game, where you play as one of the four factions, fighting against other factions to be the ruler of woodland.
 
-The rule is simple: the player who gets 30 victory points or plays and completes the dominance card (the card that change the endgame winning condition) first wins. The players play on the board of woodland, which contains 12 clearings, each with different suits and different number of slots for building. There are also paths that connect those clearings for moving warriors from one to another clearing.
+The rule is simple: the player who gets 30 victory points or plays and completes the dominance card (the card that change the endgame winning condition) first wins. The players play on the map of Woodland (Fig 2.1), which contains 12 clearings, each with different suits and different number of slots for building. There are also paths that connect those clearings for moving warriors from one to another clearing.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=14cm, height=14cm]{root_game_board.jpg}
+  \end{center}
+  \caption{Woodland, Root's game board}
+  \label{fig:root-game-board}
+\end{figure}
 
 Each player will take his turn throughout three phases: birdsong, daylight, and evening. The player will be instructed on what he must do and what actions he can do in each phase. Also, each faction will have special abilities that can be used during their turn. Instructions and actions will vary from faction to faction, but there are actions that are shared by all factions, called key actions. There are three key actions:
 
@@ -15,17 +23,20 @@ Each player will take his turn throughout three phases: birdsong, daylight, and 
   \item Battle: Choose a clearing where you have warriors as the clearing of battle. You are the attacker. Choose another player in the clearing of battle to be the defender. Roll two dice. The attacker deals hits equal to the higher roll, and the defender deals hits equal to the lower roll. Both players deal hits simultaneously and remove pieces equal to the number of hits they receive.
 \end{enumerate}
 
-Other than key actions, there will be some specific actions belonging to each faction. We will describe them in detail with an explanation of how each phase of each faction works in Table 2.1 and 2.2.
+Other than key actions, there will be some specific actions belonging to each faction. We will describe them in detail with an explanation of how each phase of each faction works in Table (2.1) and (2.2).
 
-Some of the rules will not be described here, as they are not crucial. You can find out more rules at \href{https://cdn.shopify.com/s/files/1/0106/0162/7706/files/Root_Base_Law_of_Root_June_10_2022.pdf?v=1661372308}{here}.
+Some of the rules will not be explained here, as they are not crucial and essential. More rules can be found at \href{https://cdn.shopify.com/s/files/1/0106/0162/7706/files/Root_Base_Law_of_Root_June_10_2022.pdf?v=1661372308}{here}.
 
-\textit{[Add citation to Law of Root rule book/sheet/website]}
+% \textit{[Add citation to Law of Root rule book/sheet/website]}  
+
+\renewcommand{\arraystretch}{1.5}
 
 \afterpage{
   \begin{landscape}
     \begin{table}
       \caption{\Marquise \ Flow}
       \label{tab:marquise-flow}
+      \centering
       \begin{tabular}{|p{4cm}|p{12cm}|p{6cm}|} 
        \hline
         \multicolumn{3}{|c|}{\Marquise} \\
@@ -56,7 +67,8 @@ Some of the rules will not be described here, as they are not crucial. You can f
     \begin{table}
       \caption{\Eyrie \ Flow}
       \label{tab:eyrie-flow}
-      \begin{tabular}{|p{8cm}|p{6cm}|p{8cm}|} 
+      \centering
+      \begin{tabular}{|p{6cm}|p{11cm}|p{5cm}|} 
        \hline
         \multicolumn{3}{|c|}{\Eyrie} \\
        \hline
@@ -70,6 +82,14 @@ Some of the rules will not be described here, as they are not crucial. You can f
       & \tabitem Craft using roosts.
 
       \tabitem Resolve the Decree from left column to right, taking one action per card in a matching clearing
+
+      \tabsubitem Recruit: Place warrior in a matching clearing
+
+      \tabsubitem Move
+      
+      \tabsubitem Battle
+      
+      \tabsubitem Build: Place roost in a matching clearing you rule 
       &
       \tabitem Score victory point of rightmost empty space on the Roosts track.
 

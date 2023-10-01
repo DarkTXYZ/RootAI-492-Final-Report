@@ -13,7 +13,7 @@ The rule is simple: the player who gets 30 victory points or plays and completes
 
 \begin{figure}
   \begin{center}
-    \includegraphics[width=14cm, height=14cm]{root_game_board.jpg}
+    \includegraphics[width=\textwidth]{root_game_board.jpg}
   \end{center}
   \caption{Woodland, Root's game board}
   \label{fig:root-game-board}
@@ -29,7 +29,7 @@ Each player will take his turn throughout three phases: birdsong, daylight, and 
 
 Other than key actions, there will be some specific actions belonging to each faction. We will describe them in detail with an explanation of how each phase of each faction works in Table (2.1) and (2.2).
 
-Some of the rules will not be explained here, as they are not crucial and essential. More rules can be found at \href{https://cdn.shopify.com/s/files/1/0106/0162/7706/files/Root_Base_Law_of_Root_June_10_2022.pdf?v=1661372308}{here}.
+Some of the rules will not be explained here, as they are not crucial and essential. More rules can be found at here \cite{RootBoardGameRules}.
 % TODO: add proper citation in bibliography, not a href
 
 \renewcommand{\arraystretch}{1.5}
@@ -61,6 +61,15 @@ Some of the rules will not be explained here, as they are not crucial and essent
 
       \tabsubitem Overwork: Spend a card to place one wood token at one sawmill in a clearing whose suit matches the card spent.
   & \tabitem Draw one card plus one card per draw bonus. (Discard down to five if you have more than five cards.) \\ 
+    \hline
+    \multicolumn{3}{|c|}{
+      \parbox{16cm}{
+        \vspace{.5\baselineskip}  
+      \textbf{The Keep}: Only you can place pieces in the clearing with the keep token. \\
+      \textbf{Field Hospital}: Whenever a Marquise warrior is removed, you may spend a card matching its clearing to move the warrior to the clearing with the keep token.
+        \vspace{.5\baselineskip}  
+      }
+    } \\
     \hline
   \end{tabular}}
 \end{table}
@@ -94,6 +103,15 @@ Some of the rules will not be explained here, as they are not crucial and essent
 
     \tabitem Draw one card plus one card per draw bonus. (Discard down to five if you have more than five cards.) \\ 
     \hline
+    \multicolumn{3}{|c|}{
+      \parbox{16cm}{
+        \vspace{.5\baselineskip}  
+      \textbf{Lords of the Forest}: You rule any clearings where you are tied in presence. \\
+      \textbf{Disdain for Trade}: When crafting items, you score only 1 victory point.
+        \vspace{.5\baselineskip}  
+      }
+    } \\
+    \hline
   \end{tabular}}
 \end{table}
   % \end{landscape}
@@ -101,6 +119,11 @@ Some of the rules will not be explained here, as they are not crucial and essent
 
 
 \section{Rule difference of \RootV{} and \RootB{}} % TODO
+
+In \RootB, \Marquise's Field Hospital ability can be triggered at anytime the \Marquise \ warriors are removed from the board. But in the \RootV, this ability can only be triggered when in \Marquise's turn.
+
+Also, \Marquise \ is not able to choose which wood is spent on building. In \RootV, wood is automatically removed from the board by removing the wood that is closest to the Keep first. 
+
 
 \section{Monte Carlo tree search} % TODO
 

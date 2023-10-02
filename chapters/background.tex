@@ -141,11 +141,11 @@ Root is an imperfect information game, which means generating a \Gls{complete-ga
 
 % TODO: add citations for the Chess and Go algorithms, complexity.
 
-\section{Monte Carlo tree search} % TODO: BK
+\section{Monte Carlo tree search}
 Monte Carlo tree search (MCTS) is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games. In such application, MCTS is used to solve the \Gls{game-tree}, i.e., identify the decisions that maximizes the probability of leading the player to a winning state. This is done by running many \Gls{playout}s. The result of each \Gls{playout} are then propagated back through the game tree to update the probability of that state to be chosen more, or less. Each round of MCTS consists of 4 steps: Selection, Expansion, Simulation, and Backpropagation.
 
 \subsection{Exploration and exploitation}
-During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \Gls{playout}s. This is called exploitation. Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS.
+Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \Gls{playout}s. This is called exploitation.
 
 % TODO: add citations to MCTS wikipedia
 

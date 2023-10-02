@@ -1,4 +1,4 @@
-\documentclass[semifinal]{cpecmu}
+\documentclass[semifinal, glossary]{cpecmu}
 
 %% This is a sample document demonstrating how to use the CPECMU
 %% project template. If you are having trouble, see "cpecmu.pdf" for
@@ -60,16 +60,6 @@
 % \renewcommand{\textfraction}{0.1}
 % \renewcommand{\floatpagefraction}{0.75}
 
-%% Example for glossary entry
-%% Need to use glossary option
-%% See glossaries package for complete documentation.
-\ifglossary
-  \newglossaryentry{lorem ipsum}{
-    name=lorem ipsum,
-    description={derived from Latin dolorem ipsum, translated as ``pain itself''}
-  }
-\fi
-
 %% Uncomment this command to preview only specified LaTeX file(s)
 %% imported with \include command below.
 %% Any other file imported via \include but not specified here will not
@@ -79,6 +69,13 @@
 % \includeonly{chapters/intro,chapters/background}
 
 \begin{document}
+%% Example for glossary entry
+%% Need to use glossary option
+%% See glossaries package for complete documentation.
+\ifglossary
+  \include{chapters/glossary}
+\fi
+
 \include{customCommands}
 
 

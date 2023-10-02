@@ -132,8 +132,20 @@ In \RootB, \Marquise's Field Hospital ability can be triggered at anytime the \M
 
 Also, \Marquise \ is not able to choose which wood is spent on building. In \RootV, wood is automatically removed from the board by removing the wood that is closest to the Keep first. 
 
+\section{Game tree}
+A \Gls{game-tree} is a directed graph that represents possible game states and decisions within a game. Each vertex represents a state of the game and each out going edge represents a decision at that state(vertex) which will lead the another state(vertex). The size of the game tree can be used to measure the complexity a game as it represents all the possible way a game can pan out. 
+
+A \Gls{complete-game-tree} is a \Gls{game-tree} with all states and decisions. It is possible to generate a \Gls{complete-game-tree} of a perfect information game. Given a \Gls{complete-game-tree}, it is possible to find a series of decisions from our current state that leads to a winning state. 
+
+Root is an imperfect information game, which means generating a \Gls{complete-game-tree} for it is not possible. Therefore, an algorithm that uses the \Gls{complete-game-tree} of Root to find a winning strategy is not possible. But even for Chess and Go, which do have a \Gls{complete-game-tree}, algorithms that play these two games still don't use the \Gls{complete-game-tree} since generating a \Gls{complete-game-tree} for a game with such high complexity as Chess and Go requires such a high amount of memory and therefore is not practical for modern computers. Instead, the algorithms that play this class of games will use partial game trees.
+
+
+% TODO: add citations for the Chess and Go algorithms, complexity.
 
 \section{Monte Carlo tree search} % TODO: BK
+Monte Carlo tree search (MCTS) is a search algorithm for decision processes, typically applied in software that plays board games. In such application, MCTS is used to solve the \Gls{game-tree}.
+
+
 
 \section{Reinforcement learning} % TODO: Tee
  

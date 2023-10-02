@@ -5,6 +5,7 @@
 *.fls
 *.glo
 *.gls
+*.glsdefs
 *.idx
 *.ilg
 *.ind

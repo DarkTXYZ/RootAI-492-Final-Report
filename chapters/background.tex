@@ -141,11 +141,11 @@ Root is an imperfect information game, which means generating a \Gls{complete-ga
 
 % TODO: add citations for the Chess and Go algorithms, complexity.
 
-\section{Monte Carlo tree search} % TODO: BK
+\section{Monte Carlo tree search}
 Monte Carlo tree search (MCTS) is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games. In such application, MCTS is used to solve the \Gls{game-tree}, i.e., identify the decisions that maximizes the probability of leading the player to a winning state. This is done by running many \Gls{playout}s. The result of each \Gls{playout} are then propagated back through the game tree to update the probability of that state to be chosen more, or less. Each round of MCTS consists of 4 steps: Selection, Expansion, Simulation, and Backpropagation.
 
 \subsection{Exploration and exploitation}
-During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \Gls{playout}s. This is called exploitation. Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS.
+Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \Gls{playout}s. This is called exploitation.
 
 % TODO: add citations to MCTS wikipedia
 
@@ -166,9 +166,6 @@ Reinforcement learning (RL) is a popular method used in many branches of applica
 The concept of this method is to use agents to learn in a reward-punishment environment. The goal is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
 
 Reinforcement learning is different from supervised learning that it does not need a labeled dataset.
- 
-\section{CPE knowledge used, applied, or integrated in this project} % TODO: BK
-
 
 % \section{Second section}
 % Section 2 text.

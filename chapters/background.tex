@@ -125,7 +125,7 @@ Some of the rules will not be explained here, as they are not crucial and essent
   % \end{landscape}
 % }
 
-\subsection{Rule difference of \RootV{} and \RootB{}} % TODO: Tee
+\subsection{Rule difference of \RootV{} and \RootB{}}
 
 
 In \RootB, \Marquise's Field Hospital ability can be triggered at anytime the \Marquise \ warriors are removed from the board. But in the \RootV, this ability can only be triggered when in \Marquise's turn.
@@ -147,7 +147,21 @@ Monte Carlo tree search (MCTS) is a search algorithm for decision processes, typ
 
 
 
-\section{Reinforcement learning} % TODO: Tee
+\section{Reinforcement learning} % TODO: 
+Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are 6 elements of reinforcement learning:
+
+\begin{enumerate}
+  \item Agent: the player who makes a decision about what action to take
+  \item Environment: the world in which an agent takes actions
+  \item State: current situation of the agent
+  \item Reward: feedback from the environment
+  \item Policy: how agents make decisions
+  \item Value: future reward agent would receive if taking a particular action in a particular state
+\end{enumerate}
+
+The concept of this method is to use agents to learn in a reward-punishment environment. The goal is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
+
+Reinforcement learning is different from supervised learning that it does not need a labeled dataset.
  
 \section{CPE knowledge used, applied, or integrated in this project} % TODO: BK
 

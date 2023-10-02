@@ -149,10 +149,8 @@ During MCTS processes, all nodes have some chance of being randomly picked, whic
 
 % TODO: add citations to MCTS wikipedia
 
-
-
 \section{Reinforcement learning} % TODO: 
-Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are 6 elements of reinforcement learning:
+Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are 5 main elements of reinforcement learning:
 
 \begin{enumerate}
   \item Agent: the player who makes a decision about what action to take
@@ -160,12 +158,46 @@ Reinforcement learning (RL) is a popular method used in many branches of applica
   \item State: current situation of the agent
   \item Reward: feedback from the environment
   \item Policy: how agents make decisions
-  \item Value: future reward agent would receive if taking a particular action in a particular state
 \end{enumerate}
 
-The concept of this method is to use agents to learn in a reward-punishment environment. The goal is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
+\tikzstyle{block} = [rectangle, rounded corners, 
+minimum width=3cm, 
+minimum height=1cm,
+text centered, 
+draw=black]
 
-Reinforcement learning is different from supervised learning that it does not need a labeled dataset.
+\tikzstyle{small_block} = [rectangle, rounded corners, 
+minimum width=2cm, 
+minimum height=1cm,
+text centered, 
+draw=black]
+
+\tikzstyle{dashed_one_side} = [draw, rectangle, dashed, inner sep=2em]
+
+\tikzstyle{arrow} = [draw, thick, -latex']
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[node distance=2cm]
+    \node (env) [block] {Environment};
+    \node (agent) [block, below of=env] {Agent};
+    \node (poli) [small_block, below of=agent] {Policy};
+  
+    \begin{scope}
+      \draw [arrow] (env)-- ($(env.east)-(-0.5,0)$) |- node[anchor=center, right, pos=0.225] {State, Reward} (agent);
+      \draw [arrow] (agent)--($(agent.west)-(0.5,0)$) |- node[anchor=center, left, pos=0.275] {Action} (env);
+      \draw [arrow] (poli) -- (agent);
+      \draw [arrow] (agent) -- (poli);
+    \end{scope}
+  \end{tikzpicture}
+  
+  \caption{Reinforcement Learning Model}
+  \label{fig:rl-flow}
+\end{figure}
+
+The concept of this method is to use agents to learn in a reward-punishment environment. The reinforcement learning model is described in (Fig. 2.2) The goal of reinforcement learning is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
+
+Reinforcement learning is different from supervised learning in that there is no correct answer in reinforcement learning; instead, the reinforcement agent decides how to carry out the given task. In supervised learning, the training data includes the answer key, so the model is trained with that answer.
  
 \section{CPE knowledge used, applied, or integrated in this project} % TODO: BK
 

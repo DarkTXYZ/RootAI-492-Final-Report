@@ -4,12 +4,18 @@
 \ifenglish System Evaluation\else การประเมินระบบ\fi
 \fi}
 
-ในบทนี้จะทดสอบเกี่ยวกับการทำงานในฟังก์ชันหลักๆ
+% ในบทนี้จะทดสอบเกี่ยวกับการทำงานในฟังก์ชันหลักๆ
 
 \section{Experimental Setup}
 
-Firstly, we will experiment with Random decision agent because of its easy implementation. Since we have not implemented \RootAI yet, we will conduct experiments by simulating \RootOurs,with option of randomly select actions, and collecting the results. 
+\subsection{Introductory Experiment}
+Firstly, we will experiment with random decision agent as it has the most basic implementation. Since we have not implemented \RootAI yet, we will conduct experiments by simulating \RootOurs with random actions option turned on , and collecting the results. 
 
-The results we will collect are the number of wins from two winning conditions, gaining 30 victory points or completing the dominance card, of both factions, the number of turns to end the game, and the victory points both factions have.
+We will run random decision agent for 
+
+The results we will collect are:
+\begin{itemize}
+    \item the number of wins from two winning conditions, gaining 30 victory points or completing the dominance card of each faction, the number of turns to end the game, and the victory points both factions have.
+\end{itemize}
 
 \section{Results}

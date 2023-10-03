@@ -5,7 +5,6 @@ In order to create the AI, we first need to implement \RootOurs{}. This requires
 Next step is to implement \RootAI{}, the framework for running \RootOurs{} and training AI agents. There are two AI agent implementation methods that requires additional self study: Monte Carlo tree search and reinforcement learning neural network.
 
 \section{Root}
-\subsection{Game Theory}
 Root is an \textbf{asymetric game}: a game where each player starts with different setups, gameplay mechanics, etc. Although Root's base actions such as move and battle are the same for every faction, each faction starts differently and each has its own unique mechanics and rules. Thus, Root sits closer to the asymmetric side in the symmetric--asymmetric spectrum.\\
 Examples of symmetric games are Chess, Monopoly, Prisoner's Dilemma, etc.\\
 Examples of other asymmetric games are Tapestry, Dune, Cthulhu Wars, etc.
@@ -151,7 +150,9 @@ Maintaining a balance between exploration and exploitation is an important part 
 
 \subsection{MCTS with imperfect information game and uncertainty}
 
-\cite{Perez_Liebana_2015} presents that in a deterministic game, MCTS can generate future states in nodes that will be found when performing an action. This is called a Closed Loop MCTS. But when nondeterministic actions come into concern, such as rolling dice or drawing random cards, we can still use a Closed Loop MCTS to generate all available possible outcomes as states and play out each one. However, it should be noted that this approach will make the game tree grows exponentially. An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only store the statistics and not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state, but a series of actions executed starting from the initial state of the game. 
+\cite{Perez_Liebana_2015} presents that in a deterministic game, MCTS can generate future states in nodes that will be found when performing an action. This is called a Closed Loop MCTS. But when nondeterministic actions come into concern, such as rolling dice or drawing random cards, we can still use a Closed Loop MCTS to generate all available possible outcomes as states and play out each one. However, it should be noted that this approach will make the game tree grows exponentially. 
+
+An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only store the statistics in the nodes, not storing the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state, but a series of actions executed starting from the initial state of the game. 
 
 
 
@@ -201,13 +202,10 @@ draw=black]
   \label{fig:rl-flow}
 \end{figure}
 
-The concept of this method is to use agents to learn in a reward-punishment environment. The reinforcement learning model is described in (Fig. 2.2) The goal of reinforcement learning is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
+The concept of this method is to use agents to learn in a reward-punishment environment. The reinforcement learning model is described in figure \ref{fig:rl-flow}. The goal of reinforcement learning is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
 
 Reinforcement learning is different from supervised learning in that there is no correct answer in reinforcement learning; instead, the reinforcement agent decides how to carry out the given task. In supervised learning, the training data includes the answer key, so the model is trained with that answer.
  
-\section{CPE knowledge used, applied, or integrated in this project} % TODO: BK
-
-
 % \section{Second section}
 % Section 2 text.
 

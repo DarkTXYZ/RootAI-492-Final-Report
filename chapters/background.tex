@@ -149,7 +149,11 @@ Maintaining a balance between exploration and exploitation is an important part 
 
 % TODO: add citations to MCTS wikipedia
 
-\subsection{MCTS with imperfect information game and uncertainty} % TODO: add that paper and some text
+\subsection{MCTS with imperfect information game and uncertainty}
+
+\cite{Perez_Liebana_2015} presents that in a deterministic game, MCTS can generate future states in nodes that will be found when performing an action. This is called a Closed Loop MCTS. But when nondeterministic actions come into concern, such as rolling dice or drawing random cards, we can still use a Closed Loop MCTS to generate all available possible outcomes as states and play out each one. However, it should be noted that this approach will make the game tree grows exponentially. An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only store the statistics and not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state, but a series of actions executed starting from the initial state of the game. 
+
+
 
 \section{Reinforcement learning} % TODO: 
 Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are 5 main elements of reinforcement learning:

@@ -4,6 +4,9 @@
 \ifenglish System Evaluation\else การประเมินระบบ\fi
 \fi}
 
+\definecolor{eyrie}{HTML}{1E90FF}
+\definecolor{marquise}{HTML}{FF6400}
+
 % ในบทนี้จะทดสอบเกี่ยวกับการทำงานในฟังก์ชันหลักๆ
 
 \section{Experimental Setup}
@@ -13,16 +16,53 @@ For introductory experiment, we will use random decision agent as it has the mos
 
 We will run 1000 \glspl{playout} using a random decision agent as each faction and collect the following statistics:
 \begin{itemize}
-    \item winning faction: \Marquise \ / \Eyrie
+    \item winning faction: \Marquise{} / \Eyrie
     \item winning condition: 30 victory points (vp) / dominance card (dominance)
     \item number of turns played (the number of birdsong phase played)
-    \item whose turn was it when the game ends: \Marquise \ / \Eyrie
-    \item victory points of \Marquise \ when the game ends
-    \item victory points of \Eyrie \ when the game ends
+    \item whose turn was it when the game ends: \Marquise{} / \Eyrie
+    \item victory points of \Marquise{} when the game ends
+    \item victory points of \Eyrie{} when the game ends
     \item dominance card of the winning faction: none / bird / fox / rabbit / mouse
 \end{itemize}
 
-
 \section{Results}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width  = 0.5*\textwidth,
+            height = 8cm,
+            major x tick style = transparent,
+            ybar=2*\pgflinewidth,
+            bar width=24pt,
+            ymajorgrids = true,
+            ylabel = {Number of Wins},
+            symbolic x coords={Dominance Card,Victory Point},
+            xtick = data,
+            enlarge x limits=0.5,
+            enlarge y limits=0.1,
+            ymax = 1000,
+            legend cell align=left,
+            legend style={
+                at={(0.5,-0.15)},
+                anchor=north,
+                legend columns=-1
+            },
+            nodes near coords,
+        ]
+            \addplot[style={eyrie,fill=eyrie,mark=none}]
+                coordinates {(Dominance Card, 230) (Victory Point,44)};
+    
+            \addplot[style={marquise,fill=marquise,mark=none}]
+                 coordinates {(Dominance Card,695) (Victory Point,31)};
+    
+            \legend{\Eyrie, \Marquise}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{The number of wins grouped by winning condition}
+    \label{fig:wins-by-winner-condition}
+\end{figure}
+
 
 % TODO: add result graph

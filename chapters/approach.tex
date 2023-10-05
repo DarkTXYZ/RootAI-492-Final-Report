@@ -5,7 +5,7 @@
 \fi
 }
 
-The two main components of this project: \RootOurs \ and \RootAI.
+The two main components of this project: \RootOurs{} and \RootAI.
 
 % ในบทนี้จะกล่าวถึงหลักการ และการออกแบบระบบ
 
@@ -22,7 +22,7 @@ The two main components of this project: \RootOurs \ and \RootAI.
 % \titlespacing*{\section}{0pt}{10ex}{0pt}
 
 \section{\RootOurs}
-\RootOurs \ is the game environment that mimics \RootV \ in a game of \Marquise \ versus \Eyrie. It has the following features:
+\RootOurs{} is the game environment that mimics \RootV{} in a game of \Marquise{} versus \Eyrie. It has the following features:
 \begin{itemize}
   \item Simulate the current state of the game
   \item Generate all possible actions for the current player at the current state of the game
@@ -39,7 +39,7 @@ The two main components of this project: \RootOurs \ and \RootAI.
 % system per back-end service. The system performs word querying and word modifying in
 % the database, which the back-end service cannot do directly.
 \section{\RootAI}
-\RootAI \ is the framework that trains AI agents in \RootOurs \ instance’s environment. Due to a shortage of time and players, we use the multi-agent learning approach, where agents compete against agents rather than actual players.
+\RootAI{} is the framework that trains AI agents in \RootOurs{} instance’s environment. Due to a shortage of time and players, we use the multi-agent learning approach, where agents compete against agents rather than actual players.
 
 There are 3 agent implementation methods: Random decision, Monte Carlo tree search, and Reinforcement learning neural network.
 
@@ -58,7 +58,7 @@ The agent constructed using RLNN will use RNN type model, taking the current sta
 
 
 \begin{enumerate}
-  \item Agent: the player that's playing as \Marquise \ faction or \Eyrie \ faction
+  \item Agent: the player that's playing as \Marquise{} faction or \Eyrie{} faction
   \item Environment: the map, opponent's state and action, draw pile, etc. in \RootOurs % not sure
   \item State: all game components that belonged to the player
   \item Reward: victory points earned, getting a win, or taking hold of clearing with matching suit to the played dominance card, all combined together through the reward function 

@@ -1,7 +1,7 @@
 \chapter{\ifenglish Introduction\else บทนำ\fi}
 
 \section{\ifenglish Project rationale\else ที่มาของโครงงาน\fi}
-Artificial intelligence (AI) has revolutionized the world of video games, by giving players friends to play with or foes to play against. The digital adaptation video game of the \RootB{} is no exception. But there are problems with the AIs in . There are multiple reports by \RootV{} players that the AIs are no longer challenging to play against once you start to know how to play your faction or that the AIs make awful decisions that no humans would ever make in a similar situation.
+Artificial intelligence (AI) has revolutionized the world of video games by giving players friends to play with or foes to play against. The digital adaptation video game of the \RootB{} is no exception. But there are problems with the AIs. There are multiple reports by \RootV{} players that the AIs are no longer challenging to play against once you start to know how to play your faction or that the AIs make awful decisions that no humans would ever make in a similar situation.
 
 This project focuses on the recommended scenario in a two-player game of \Marquise{} faction versus \Eyrie{} faction since they are both empire factions, i.e., factions with many buildings and warriors on the board, thus making this scenario have a lot of interactions.
 
@@ -36,7 +36,7 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
 \begin{enumerate}
     \item Implementation of \RootOurs{}.
     \item Implementation of \RootAI{}.
-    \item Exclude direct integration with \RootV{}, i.e., no pulling data from a running \RootV{}, and no injecting decision to a running \RootV{} via code.
+    \item Exclude direct integration with \RootV{}, i.e., no pulling data from a running \RootV{}, and no injecting decisions into a running \RootV{} via code.
     \item Exclude direct integration with \RootB{}, i.e., no computer vision will be used to detect the state of the board game.
 \end{enumerate}
 
@@ -118,7 +118,7 @@ Python is chosen as the language for this project's implementation due to its fl
 \end{plan}
 
 \section{\ifenglish Roles and responsibilities\else บทบาทและความรับผิดชอบ\fi}
-In \RootOurs{}, base classes and faction-neutral functions are divided equally among the two of us. Pawaret is responsible for \Marquise{} related functionalities. Baangkok is responsible for \Eyrie{} related functionalities.
+In \RootOurs{}, base classes and faction-neutral functions are divided equally among the two of us. Pawaret is responsible for \Marquise{}-related functionalities. Baangkok is responsible for \Eyrie{}-related functionalities.
 
 In \RootAI{}, each step is divided equally, starting from method research to implementation to testing. This allows us to continuously exchange our knowledge about the current AI agent implementation method, allowing us to create and improve each AI agent to have good performance.
 
@@ -127,4 +127,4 @@ Impacts of this project on society, health, safety, legal, and cultural issues
 \else%
 ผลกระทบด้านสังคม สุขภาพ ความปลอดภัย กฎหมาย และวัฒนธรรม
 \fi}
-This project can work as a foundation for future researches on reinforcement learning, asymmetrical games, game AI, and other related topics.
+This project can work as a foundation for future research on reinforcement learning, asymmetrical games, game AI, and other related topics.

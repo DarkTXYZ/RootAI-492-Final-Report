@@ -6,7 +6,7 @@ The next step is to implement \RootAI{}, the framework for running \RootOurs{} a
 
 \section{Root}
 Root is an \textbf{asymetric game}: a game where each player starts with different setups, gameplay mechanics, etc. Although Root’s base actions, such as move and battle, are the same for every faction, each faction starts differently, and each has its own unique mechanics and rules. Thus, Root sits closer to the asymmetric side in the symmetric-asymmetric spectrum. \\
-Examples of symmetric games are chess, Monopoly, Prisoner's Dilemma, etc.\\
+Examples of symmetric games are Chess, Monopoly, Prisoner's Dilemma, etc.\\
 Examples of other asymmetric games are Tapestry, Dune, Cthulhu Wars, etc.
 
 Root is an \textbf{imperfect information game}—a game where there is information hidden from the player. Most elements of Root, such as warrior placement, building count, etc., are laid out for all players to see. But cards on the player’s hand are only visible to that player, i.e., other players’ cards in hand are the hidden information in this game.
@@ -16,7 +16,7 @@ Root is a \textbf{non-deterministic} game: a game where there’s some element o
 \subsection{Brief Rules of Root} \label{brief-rules-of-root}
 Root is a 2-4 player turn-based game where you play as one of the four factions, fighting against other factions to be the ruler of woodland.
 
-The rule is simple: the player who gets 30 victory points or plays and completes the dominance card (the card that changes the endgame winning condition) first wins. The players play on the map of Woodland (Fig. 2.1), which contains 12 clearings, each with different suits and a different number of slots for building. There are also paths that connect those clearings, moving warriors from one clearing to another.
+The rule is simple: the player who gets 30 victory points or plays and completes the dominance card (the card that changes the endgame winning condition) first wins. The players play on the map of Woodland (figure \ref{fig:root-game-board}), which contains 12 clearings, each with different suits and a different number of slots for building. There are also paths that connect those clearings, moving warriors from one clearing to another.
 
 \begin{figure}
   \begin{center}
@@ -135,12 +135,12 @@ A \gls{game-tree} is a directed graph that represents possible game states and d
 
 A \gls{complete-game-tree} is a \gls{game-tree} with all states and decisions. It is possible to generate a \gls{complete-game-tree} for a perfect information game. Given a \gls{complete-game-tree}, it is possible to find a series of decisions from our current state that lead to a winning state.
 
-Root is an imperfect information game, which means generating a \gls{complete-game-tree} for it is not possible. Therefore, an algorithm that uses the \gls{complete-game-tree} of Root to find a winning strategy is not possible. But even for Chess and Go, which do have a \gls{complete-game-tree}, algorithms that play these two games still don't use the \gls{complete-game-tree} since generating a \gls{complete-game-tree} for a game with such high complexity as Chess and Go requires such a high amount of memory and therefore is not practical for modern computers. Instead, the algorithms that play these games uses partial game trees.
+Root is an imperfect information game, which means generating a \gls{complete-game-tree} for it is not possible. Therefore, an algorithm that uses the \gls{complete-game-tree} of Root to find a winning strategy is not possible. But even for Chess and Go, which do have a \gls{complete-game-tree}, algorithms that play these two games still don't use the \gls{complete-game-tree} since generating a \gls{complete-game-tree} for a game with such high complexity as Chess and Go requires such a high amount of memory and therefore is not practical for modern computers. Instead, the algorithms that play these games use partial game trees.
 
 % TODO: add citations for the Chess and Go algorithms, complexity.
 
 \section{Monte Carlo tree search}
-Monte Carlo tree search (MCTS) is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games. In such application, MCTS is used to solve the \gls{game-tree}, i.e., identify the decisions that maximizes the probability of leading the player to a winning state. This is done by running many \glspl{playout}. The result of each \gls{playout} are then propagated back through the game tree to update the probability of that state to be chosen more, or less. Each round of MCTS consists of 4 steps: Selection, Expansion, Simulation, and Backpropagation.
+Monte Carlo tree search (MCTS) is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games. In such applications, MCTS is used to solve the \gls{game-tree}, i.e., identify the decisions that maximize the probability of leading the player to a winning state. This is done by running many \glspl{playout}. The results of each \gls{playout} are then propagated back through the game tree to update the probability of that state being chosen more or less. Each round of MCTS consists of four steps: Selection, Expansion, Simulation, and Backpropagation.
 
 \subsection{Exploration and exploitation}
 Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \glspl{playout}. This is called exploitation.
@@ -151,12 +151,11 @@ Maintaining a balance between exploration and exploitation is an important part 
 
 \cite{Perez_Liebana_2015} presents that in a deterministic game, MCTS can generate future states in nodes that will be found when performing an action. This is called a Closed Loop MCTS. But when nondeterministic actions come into concern, such as rolling dice or drawing random cards, we can still use a Closed Loop MCTS to generate all available possible outcomes as states and play out each one. However, it should be noted that this approach will make the game tree grows exponentially. 
 
-An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only store the statistics in the nodes, not storing the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state, but a series of actions executed starting from the initial state of the game. 
-
+An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only stores the statistics in the nodes, not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state but a series of actions executed starting from the initial state of the game.
 
 
 \section{Reinforcement learning} % TODO: 
-Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are 5 main elements of reinforcement learning:
+Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are five main elements of reinforcement learning:
 
 \begin{enumerate}
   \item Agent: the player who makes a decision about what action to take

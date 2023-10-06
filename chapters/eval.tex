@@ -70,10 +70,10 @@ We will run 1000 \glspl{playout} using a random decision agent as each faction a
 \end{figure}
 
 \subsubsection{High dominance card wins} \label{high-dominance-card-wins}
-Dominance card wins happen way more often than victory points wins as seen in figure \ref{fig:wins-by-winner-condition}. Our speculation is that it is the action generation in \RootOurs \ that makes the ``Activate Dominance Card'' action have a higher likelihood of being picked. \RootOurs generates actions in a manner that is more suitable for human players, e.g., in the move action, the agent needs to select a start clearing, then a destination clearing, and then how many warriors to move. These are done as three separate actions, while in reality, the action of ``Move X warriors from A to B'' should be counted as one action.
+Dominance card wins happen way more often than victory points wins as seen in figure \ref{fig:wins-by-winner-condition}. Our speculation is that it is the action generation in \RootOurs{} that makes the ``Activate Dominance Card'' action have a higher likelihood of being picked. \RootOurs{} generates actions in a manner that is more suitable for human players, e.g., in the move action, the agent needs to select a start clearing, then a destination clearing, and then how many warriors to move. These are done as three separate actions, while in reality, the action of ``Move X warriors from A to B'' should be counted as one action.
 
 \subsubsection{\Marquise's high dominance card wins}
-\Marquise \ have a higher chance to win with dominance card (figure \ref{fig:wins-by-winner-condition}). Our speculation is that because at the start of the round, \Marquise \ have control over clearings except the one that \Eyrie \ starts in, therefore, if \Eyrie does not play properly to take control of the clearings, \Marquise will likely win upon the activation of a dominance card of any suit.
+\Marquise \ have a higher chance to win with dominance card (figure \ref{fig:wins-by-winner-condition}). Our speculation is that because at the start of the round, \Marquise{} have control over clearings except the one that \Eyrie{} starts in, therefore, if \Eyrie{} does not play properly to take control of the clearings, \Marquise{} will likely win upon the activation of a dominance card of any suit.
 
 \subsubsection{\Eyrie's high victory points wins}
 \Eyrie \ have a higher chance to win with victory points (figure \ref{fig:wins-by-winner-condition}). Although there are not many data for rounds with victory points wins, our experience during development where we turned of the dominance card mechanics also have more \Eyrie \ victory points win. Our speculation is that this is due to \Eyrie's passive earning of victory points, all they need to do is protect their roosts and don't turmoil too much. In contrast, \Marquise \ needs to actively build buildings to earn points, which from the issue about action generation in \ref{high-dominance-card-wins}, action of building buildings might not have the correct likelihood of being picked.
@@ -111,7 +111,7 @@ Dominance card wins happen way more often than victory points wins as seen in fi
             ] coordinates {};
         \end{axis}
     \end{tikzpicture}
-    \caption{Number of turns used to win by dominance card condition}
+    \caption{Number of turns taken to win by dominance card condition}
 \end{figure}
 
 \begin{figure}
@@ -145,75 +145,75 @@ Dominance card wins happen way more often than victory points wins as seen in fi
             ] coordinates {};
         \end{axis}
     \end{tikzpicture}
-    \caption{Number of turns used to win by victory points condition}
+    \caption{Number of turns taken to win by victory points condition}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            ytick={1,2,3,4},
-            yticklabels={\Eyrie, \Marquise},
-            xlabel={Number of Turns},
-            ylabel={Faction},
-            boxplot/draw direction=x,
-        ]
-            \addplot+[
-                boxplot prepared={
-                    median=30.0, 
-                    upper quartile=31.0, 
-                    lower quartile=30.0	, 
-                    upper whisker=33, 
-                    lower whisker=30
-                }, eyrie, draw=eyrie
-            ] coordinates {};
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             ytick={1,2,3,4},
+%             yticklabels={\Eyrie, \Marquise},
+%             xlabel={Number of Turns},
+%             ylabel={Faction},
+%             boxplot/draw direction=x,
+%         ]
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=30.0, 
+%                     upper quartile=31.0, 
+%                     lower quartile=30.0	, 
+%                     upper whisker=33, 
+%                     lower whisker=30
+%                 }, eyrie, draw=eyrie
+%             ] coordinates {};
 
-            \addplot+[
-                boxplot prepared={
-                    median=13.0, 
-                    upper quartile=15.25, 
-                    lower quartile=11.0	, 
-                    upper whisker=27, 
-                    lower whisker=9
-                }, marquise, draw=marquise
-            ] coordinates {};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Number of Victory Points when \Eyrie{} wins}
-\end{figure}
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=13.0, 
+%                     upper quartile=15.25, 
+%                     lower quartile=11.0	, 
+%                     upper whisker=27, 
+%                     lower whisker=9
+%                 }, marquise, draw=marquise
+%             ] coordinates {};
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Number of Victory Points when \Eyrie{} wins}
+% \end{figure}
 
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            ytick={1,2,3,4},
-            yticklabels={\Eyrie, \Marquise},
-            xlabel={Number of Turns},
-            ylabel={Faction},
-            boxplot/draw direction=x,
-        ]
-            \addplot+[
-                boxplot prepared={
-                    median=6.0, 
-                    upper quartile=11.0, 
-                    lower quartile=4.0, 
-                    upper whisker=21, 
-                    lower whisker=2
-                }, eyrie, draw=eyrie
-            ] coordinates {};
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             ytick={1,2,3,4},
+%             yticklabels={\Eyrie, \Marquise},
+%             xlabel={Number of Turns},
+%             ylabel={Faction},
+%             boxplot/draw direction=x,
+%         ]
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=6.0, 
+%                     upper quartile=11.0, 
+%                     lower quartile=4.0, 
+%                     upper whisker=21, 
+%                     lower whisker=2
+%                 }, eyrie, draw=eyrie
+%             ] coordinates {};
 
-            \addplot+[
-                boxplot prepared={
-                    median=30.0, 
-                    upper quartile=32, 
-                    lower quartile=30.0	, 
-                    upper whisker=33, 
-                    lower whisker=30
-                }, marquise, draw=marquise
-            ] coordinates {};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Number of Victory Points when \Marquise{} wins by victory points condition}
-\end{figure}
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=30.0, 
+%                     upper quartile=32, 
+%                     lower quartile=30.0	, 
+%                     upper whisker=33, 
+%                     lower whisker=30
+%                 }, marquise, draw=marquise
+%             ] coordinates {};
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Number of Victory Points when \Marquise{} wins by victory points condition}
+% \end{figure}
 
 % TODO: add result graph

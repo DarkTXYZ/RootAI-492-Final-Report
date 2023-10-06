@@ -73,10 +73,14 @@ We will run 1000 \glspl{playout} using a random decision agent as each faction a
 Dominance card wins happen way more often than victory points wins as seen in figure \ref{fig:wins-by-winner-condition}. Our speculation is that it is the action generation in \RootOurs{} that makes the ``Activate Dominance Card'' action have a higher likelihood of being picked. \RootOurs{} generates actions in a manner that is more suitable for human players, e.g., in the move action, the agent needs to select a start clearing, then a destination clearing, and then how many warriors to move. These are done as three separate actions, while in reality, the action of ``Move X warriors from A to B'' should be counted as one action.
 
 \subsubsection{\Marquise's high dominance card wins}
-\Marquise \ have a higher chance to win with dominance card (figure \ref{fig:wins-by-winner-condition}). Our speculation is that because at the start of the round, \Marquise{} have control over clearings except the one that \Eyrie{} starts in, therefore, if \Eyrie{} does not play properly to take control of the clearings, \Marquise{} will likely win upon the activation of a dominance card of any suit.
+\Marquise \ have a higher chance to win with dominance card as seen in figure \ref{fig:wins-by-winner-condition}. Our speculation is that because at the start of the round, \Marquise{} have control over clearings except the one that \Eyrie{} starts in, therefore, if \Eyrie{} does not play properly to take control of the clearings, \Marquise{} will likely win upon the activation of a dominance card of any suit.
+
+Additionally, games with \Marquise's dominance card wins take fewer turns, as seen in figure \ref{fig:turns-to-dominance-win}. Which should be due to \Marquise \ starting with more clearings under control.
 
 \subsubsection{\Eyrie's high victory points wins}
-\Eyrie \ have a higher chance to win with victory points (figure \ref{fig:wins-by-winner-condition}). Although there are not many data for rounds with victory points wins, our experience during development where we turned of the dominance card mechanics also have more \Eyrie \ victory points win. Our speculation is that this is due to \Eyrie's passive earning of victory points, all they need to do is protect their roosts and don't turmoil too much. In contrast, \Marquise \ needs to actively build buildings to earn points, which from the issue about action generation in \ref{high-dominance-card-wins}, action of building buildings might not have the correct likelihood of being picked.
+\Eyrie \ have a higher chance to win with victory points as seen in figure \ref{fig:wins-by-winner-condition}. Although there are not many data for rounds with victory points wins, our experience during development where we turned of the dominance card mechanics also have more \Eyrie \ victory points win. Our speculation is that this is due to \Eyrie's passive earning of victory points, all they need to do is protect their roosts and don't turmoil too much. In contrast, \Marquise \ needs to actively build buildings to earn victory points, which from the issue about action generation in \ref{high-dominance-card-wins}, action of building buildings might not have the correct likelihood of being picked.
+
+Additionally, games with \Eyrie's victory points wins take more turns than those with \Marquise's, as seen in figure \ref{fig:turns-to-vp-win}. Which should be due to \Eyrie \ having passive, continuous earning of victory points every turn while \Marquise's earnings is more like a burst of victory points every time they build a building.
 
 
 
@@ -111,7 +115,8 @@ Dominance card wins happen way more often than victory points wins as seen in fi
             ] coordinates {};
         \end{axis}
     \end{tikzpicture}
-    \caption{Number of turns taken to win by dominance card condition}
+    \caption{Number of turns to achieve a dominance win}
+    \label{fig:turns-to-dominance-win}
 \end{figure}
 
 \begin{figure}
@@ -145,7 +150,8 @@ Dominance card wins happen way more often than victory points wins as seen in fi
             ] coordinates {};
         \end{axis}
     \end{tikzpicture}
-    \caption{Number of turns taken to win by victory points condition}
+    \caption{Number of turns to achieve a victory points win}
+    \label{fig:turns-to-vp-win}
 \end{figure}
 
 % \begin{figure}
@@ -154,7 +160,7 @@ Dominance card wins happen way more often than victory points wins as seen in fi
 %         \begin{axis}[
 %             ytick={1,2,3,4},
 %             yticklabels={\Eyrie, \Marquise},
-%             xlabel={Number of Turns},
+%             xlabel={Victory Points},
 %             ylabel={Faction},
 %             boxplot/draw direction=x,
 %         ]
@@ -188,7 +194,7 @@ Dominance card wins happen way more often than victory points wins as seen in fi
 %         \begin{axis}[
 %             ytick={1,2,3,4},
 %             yticklabels={\Eyrie, \Marquise},
-%             xlabel={Number of Turns},
+%             xlabel={Victory Points},
 %             ylabel={Faction},
 %             boxplot/draw direction=x,
 %         ]

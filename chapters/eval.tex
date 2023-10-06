@@ -65,4 +65,140 @@ We will run 1000 \glspl{playout} using a random decision agent as each faction a
 \end{figure}
 
 
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ytick={1,2},
+            yticklabels={\Eyrie, \Marquise},
+            xlabel={Number of Turns},
+            ylabel={Faction},
+            boxplot/draw direction=x,
+        ]
+            \addplot+[
+                boxplot prepared={
+                    median=42, 
+                    upper quartile=59.5, 
+                    lower quartile=30, 
+                    upper whisker=304, 
+                    lower whisker=14
+                }, eyrie, draw=eyrie
+            ] coordinates {};
+
+            \addplot+[
+                boxplot prepared={
+                    median=27.0, 
+                    upper quartile=47.0, 
+                    lower quartile=19.0, 
+                    upper whisker=339.0, 
+                    lower whisker=7.0
+                }, marquise, draw=marquise
+            ] coordinates {};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Number of turns used to win by dominance card condition}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ytick={1,2,3,4},
+            yticklabels={\Eyrie, \Marquise},
+            xlabel={Number of Turns},
+            ylabel={Faction},
+            boxplot/draw direction=x,
+        ]
+            \addplot+[
+                boxplot prepared={
+                    median=33, 
+                    upper quartile=42, 
+                    lower quartile=26, 
+                    upper whisker=58, 
+                    lower whisker=18
+                }, eyrie, draw=eyrie
+            ] coordinates {};
+
+            \addplot+[
+                boxplot prepared={
+                    median=25.0, 
+                    upper quartile=27.0, 
+                    lower quartile=22.5, 
+                    upper whisker=37.0, 
+                    lower whisker=17.0
+                }, marquise, draw=marquise
+            ] coordinates {};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Number of turns used to win by victory points condition}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ytick={1,2,3,4},
+            yticklabels={\Eyrie, \Marquise},
+            xlabel={Number of Turns},
+            ylabel={Faction},
+            boxplot/draw direction=x,
+        ]
+            \addplot+[
+                boxplot prepared={
+                    median=30.0, 
+                    upper quartile=31.0, 
+                    lower quartile=30.0	, 
+                    upper whisker=33, 
+                    lower whisker=30
+                }, eyrie, draw=eyrie
+            ] coordinates {};
+
+            \addplot+[
+                boxplot prepared={
+                    median=13.0, 
+                    upper quartile=15.25, 
+                    lower quartile=11.0	, 
+                    upper whisker=27, 
+                    lower whisker=9
+                }, marquise, draw=marquise
+            ] coordinates {};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Number of Victory Points when \Eyrie{} wins}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ytick={1,2,3,4},
+            yticklabels={\Eyrie, \Marquise},
+            xlabel={Number of Turns},
+            ylabel={Faction},
+            boxplot/draw direction=x,
+        ]
+            \addplot+[
+                boxplot prepared={
+                    median=6.0, 
+                    upper quartile=11.0, 
+                    lower quartile=4.0, 
+                    upper whisker=21, 
+                    lower whisker=2
+                }, eyrie, draw=eyrie
+            ] coordinates {};
+
+            \addplot+[
+                boxplot prepared={
+                    median=30.0, 
+                    upper quartile=32, 
+                    lower quartile=30.0	, 
+                    upper whisker=33, 
+                    lower whisker=30
+                }, marquise, draw=marquise
+            ] coordinates {};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Number of Victory Points when \Marquise{} wins by victory points condition}
+\end{figure}
+
 % TODO: add result graph

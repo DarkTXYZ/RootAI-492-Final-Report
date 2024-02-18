@@ -3,9 +3,13 @@
 
 \ifproject
 \begin{abstractTH}
-เป้าหมายของโครงการนี้คือ การพัฒนาระบบปัญญาประดิษฐ์ที่สามารถเล่นเกมกระดาน ``Root'' ได้อย่างชาญฉลาดและมีประสิทธิภาพ โดยระบบจะรับ state ปัจจุบันของเกม และทำการตัดสินใจเลือกทำ action ต่างๆในระหว่งาการเล่น ระบบนี้จะถูกนำไปแข่งขันกับ AI ภายในวิดีโอเกมดัดแปลงดิจิทัลของเกมกระดาน Root
+เป้าหมายของโครงการนี้คือ การพัฒนาระบบปัญญาประดิษฐ์ที่สามารถเล่นเกมกระดาน ``Root'' ได้อย่างชาญฉลาดและมีประสิทธิภาพ โดยระบบจะรับ state ปัจจุบันของเกม และทำการตัดสินใจเลือกทำ action ต่างๆในระหว่างการเล่น
 
-Root เป็นเกมอสมมาตรที่สามารถสังเกตได้บางส่วน โดยผู้เล่นแต่ละคนมีกลไกเกมและเป้าหมายที่แตกต่างกัน
+Root เป็นเกมอสมมาตรที่สามารถสังเกตได้บางส่วน โดยผู้เล่นแต่ละคนมีกลไกเกมและเป้าหมายที่แตกต่างกัน เกมกระดาน Root ประกอบไปด้วยหลายเผ่า แต่ละเผ่ามีวิธีไปถึงการชนะได้แตกต่างกัน ในโครงการนี้เราจะสนใจที่ 2 เผ่าหลัก ได้แก่เผ่า ``Marquise'' de Cat และเผ่า the ``Eyrie'' Dynasties
+
+อัลกอริทึมหลักที่เราจะใช้ในการสร้างปัญญาประดิษฐ์คือ Monte Carlo Tree Search (MCTS) ซึ่งจะหาความน่าจะเป็นในการชนะของแต่ละ action ที่ทำได้โดยการลองเล่นด้วย action นั้นหลายๆรอบ จากนั้นเลือก action ที่ทำให้ความน่าจะเป็นในการชนะสูงที่สุด
+
+อัลกอริทึม MCTS มี parameters หลายตัว นั่นทำให้มี variant ของ MCTS อยู่หลาย variant เราจะนำ MCTS แต่ละ variant มาแข่งเพื่อหา variant ของ MCTS ที่ดีที่สุดสำหรับแต่ละเผ่า
 
 % เขียนบทคัดย่อของโครงงานที่นี่
 
@@ -19,13 +23,17 @@ Root เป็นเกมอสมมาตรที่สามารถสั
 \end{abstractTH}
 
 \begin{abstract}
-Our goal is to develop an artificial intelligence (AI) system capable of playing the board game ``Root''. Our objective is to create an intelligent agent that can take game state as input, make decisions in each phase, and compete against the AI in the digital adaptation video game of the board game Root.
+Our goal is to develop an artificial intelligence (AI) system capable of playing the board game ``Root''. Our objective is to create an intelligent agent that can take game state as input and make intelligent decisions in each phase.
 
 
-Root is a partially observable asymmetric game where each player has different game mechanics and goals. There are many factions within Root, each having its own way to achieve victory conditions. We will focus on two base factions: Marquise the Cat and the Eyrie Dynasties.
+Root is a partially observable asymmetric game where each player has different game mechanics and goals. There are many factions within Root, each having its own way to achieve victory conditions. We will focus on two base factions: ``Marquise'' de Cat and the ``Eyrie'' Dynasties.
 
+Our main algorithm for implementing the AI is Monte Carlo Tree Search (MCTS). MCTS algorithm maximizes the probability of winning by simulating many rollouts and choosing the best decision.
 
-To build the AI, we will construct multiple AI agents and have them play against one another so they can both improve themselves. Each agent will have different versions built from different algorithms, including Monte Carlo Tree Search, Neural Network Reinforcement Learning, random, weighted-random, hard-coded, human player, etc.
+There are multiple parameters for the MCTS algorithm resulting in multiple variants of MCTS algorithms. We will pitch different variants of MCTS together with aim to find the best MCTS variant for each faction.
+
+% To build the AI, we will construct multiple AI agents and have them play against one another so they can both improve themselves. Each agent will have different versions built from different algorithms, including Monte Carlo Tree Search, Neural Network Reinforcement Learning, random, weighted-random, hard-coded, human player, etc.
+
 % We aim to develop an artificial intelligence (AI) system capable of playing the board game "Root." Our objective is to create an intelligent agent that can take game state as input, make decisions in each phase, and compete against the AI in the digital adaptation video game of the board game Root.
 
 % Root is a partially observable asymmetric game where each player has different game mechanics and goals. This can be applied to real-world problems where different parties have different goals but are in the same area, so they have to compete to take hold of the limited resources needed to complete their goals.
@@ -48,10 +56,11 @@ Dedication page is optional.
 \fi % \iffalse
 
 \begin{acknowledgments}
-Your acknowledgments go here. Make sure it sits inside the
-\texttt{acknowledgment} environment.
+We would like to express my deep appreciation for Asst. Prof. Kasemsit Teeyapan, Ph.D. for his exceptional dedication, expertise, and detailed guidance throughout the project, which served as a constant source of inspiration and helped ensure its successful completion.
+% Your acknowledgments go here. Make sure it sits inside the
+% \texttt{acknowledgment} environment.
 
-\acksign{2023}{10}{6}
+\acksign{2024}{02}{18}
 \end{acknowledgments}%
 \fi % \ifproject
 

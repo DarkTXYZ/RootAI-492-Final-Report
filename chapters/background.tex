@@ -1,6 +1,6 @@
 \chapter{\ifenglish Background Knowledge and Theory\else ทฤษฎีที่เกี่ยวข้อง\fi}
 
-In order to create the AI, we first need to implement \RootOurs{}. This requires knowledge of game programming fundamentals and extensive knowledge of the rules of \RootB{}. However, there are minor rule differences between \RootV{} and \RootB{}, and for us to create an AI to compete with \RootV{}’s AI, we also need to find and implement these minor differences in our \RootOurs{}.
+In order to create the AI, we first need to implement \RootOurs{}. This requires knowledge of game programming fundamentals and extensive knowledge of the rules of \RootB{}. However, there are minor rule differences between \RootV{} and \RootB{}. Since \RootV{}`s AIs are the root cause of our project, we also need to find and implement these minor differences in our \RootOurs{}.
 
 The next step is to implement \RootAI{}, the framework for running \RootOurs{} and training AI agents. There are two AI agent implementation methods that require additional self-study: Monte Carlo tree search and reinforcement learning neural networks.
 
@@ -154,56 +154,58 @@ Maintaining a balance between exploration and exploitation is an important part 
 An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only stores the statistics in the nodes, not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state but a series of actions executed starting from the initial state of the game.
 
 
-\section{Reinforcement learning} % TODO: 
-\cite{Reinforcement-Learning} Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are five main elements of reinforcement learning:
+% \section{Reinforcement learning} % TODO: 
+% \cite{Reinforcement-Learning} Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are five main elements of reinforcement learning:
 
-\begin{enumerate}
-  \item Agent: the player who makes a decision about what action to take
-  \item Environment: the world in which an agent takes actions
-  \item State: current situation of the agent
-  \item Reward: feedback from the environment
-  \item Policy: how agents make decisions
-\end{enumerate}
+% \begin{enumerate}
+%   \item Agent: the player who makes a decision about what action to take
+%   \item Environment: the world in which an agent takes actions
+%   \item State: current situation of the agent
+%   \item Reward: feedback from the environment
+%   \item Policy: how agents make decisions
+% \end{enumerate}
 
-\tikzstyle{block} = [rectangle, rounded corners, 
-minimum width=3cm, 
-minimum height=1cm,
-text centered, 
-draw=black]
+% \tikzstyle{block} = [rectangle, rounded corners, 
+% minimum width=3cm, 
+% minimum height=1cm,
+% text centered, 
+% draw=black]
 
-\tikzstyle{small_block} = [rectangle, rounded corners, 
-minimum width=2cm, 
-minimum height=1cm,
-text centered, 
-draw=black]
+% \tikzstyle{small_block} = [rectangle, rounded corners, 
+% minimum width=2cm, 
+% minimum height=1cm,
+% text centered, 
+% draw=black]
 
-\tikzstyle{dashed_one_side} = [draw, rectangle, dashed, inner sep=2em]
+% \tikzstyle{dashed_one_side} = [draw, rectangle, dashed, inner sep=2em]
 
-\tikzstyle{arrow} = [draw, thick, -latex']
+% \tikzstyle{arrow} = [draw, thick, -latex']
 
-\begin{figure}
-  \centering
-  \begin{tikzpicture}[node distance=2cm]
-    \node (env) [block] {Environment};
-    \node (agent) [block, below of=env] {Agent};
-    \node (poli) [small_block, below of=agent] {Policy};
+% \begin{figure}
+%   \centering
+%   \begin{tikzpicture}[node distance=2cm]
+%     \node (env) [block] {Environment};
+%     \node (agent) [block, below of=env] {Agent};
+%     \node (poli) [small_block, below of=agent] {Policy};
   
-    \begin{scope}
-      \draw [arrow] (env)-- ($(env.east)-(-0.5,0)$) |- node[anchor=center, right, pos=0.225] {State, Reward} (agent);
-      \draw [arrow] (agent)--($(agent.west)-(0.5,0)$) |- node[anchor=center, left, pos=0.275] {Action} (env);
-      \draw [arrow] (poli) -- (agent);
-      \draw [arrow] (agent) -- (poli);
-    \end{scope}
-  \end{tikzpicture}
+%     \begin{scope}
+%       \draw [arrow] (env)-- ($(env.east)-(-0.5,0)$) |- node[anchor=center, right, pos=0.225] {State, Reward} (agent);
+%       \draw [arrow] (agent)--($(agent.west)-(0.5,0)$) |- node[anchor=center, left, pos=0.275] {Action} (env);
+%       \draw [arrow] (poli) -- (agent);
+%       \draw [arrow] (agent) -- (poli);
+%     \end{scope}
+%   \end{tikzpicture}
   
-  \caption{Reinforcement Learning Model}
-  \label{fig:rl-flow}
-\end{figure}
+%   \caption{Reinforcement Learning Model}
+%   \label{fig:rl-flow}
+% \end{figure}
 
-The concept of this method is to use agents to learn in a reward-punishment environment. The reinforcement learning model is described in figure \ref{fig:rl-flow}. The goal of reinforcement learning is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
+% The concept of this method is to use agents to learn in a reward-punishment environment. The reinforcement learning model is described in figure \ref{fig:rl-flow}. The goal of reinforcement learning is to learn a policy that maximizes the reward the agent will receive. At first, the agent will be given the objective they must achieve. At each timestep of learning, the agent will receive the current state and available actions. Then, the agent will decide what actions to take from the policy they have, moving to a new state. By using the reward function, the feedback is returned to the agent to tell how well they behave or how they take actions. The agent will use that feedback to update their policy and then take another action, repeating the process until the agent has reached its objectives.
 
-Reinforcement learning is different from supervised learning in that there is no correct answer in reinforcement learning; instead, the reinforcement agent decides how to carry out the given task. In supervised learning, the training data includes the answer key, so the model is trained with that answer.
+% Reinforcement learning is different from supervised learning in that there is no correct answer in reinforcement learning; instead, the reinforcement agent decides how to carry out the given task. In supervised learning, the training data includes the answer key, so the model is trained with that answer.
  
+%%%%%%
+
 % \section{Second section}
 % Section 2 text.
 

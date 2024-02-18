@@ -25,11 +25,11 @@ The two main components of this project: \RootOurs{} and \RootAI.
 \RootOurs{} is the game environment that mimics \RootV{} in a game of \Marquise{} versus \Eyrie. It has the following features:
 \begin{itemize}
   \item Simulate the current state of the game
-  \item Generate all possible actions for the current player at the current state of the game
+  \item Generate all possible actions (``legal actions'') for the current player at the current state of the game
   \item Change state according to the selected action 
-  \begin{itemize}
-    \item With option for whether the simulation will randomize the non-deterministic actions by itself or whether the player can input a specific outcome value for the non-deterministic actions.
-  \end{itemize}
+  % \begin{itemize}
+  %   \item With option for whether the simulation will randomize the non-deterministic actions by itself or whether the player can input a specific outcome value for the non-deterministic actions.
+  % \end{itemize}
 \end{itemize}
 
 
@@ -39,9 +39,9 @@ The two main components of this project: \RootOurs{} and \RootAI.
 % system per back-end service. The system performs word querying and word modifying in
 % the database, which the back-end service cannot do directly.
 \section{\RootAI}
-\RootAI{} is the framework that trains AI agents in \RootOurs{} instance’s environment. Due to a shortage of time and players, we use the multi-agent learning approach, where agents compete against agents rather than actual players.
+\RootAI{} is the framework that allows humans and AI agents to interact with \RootOurs{} instance's environment.
 
-There are 3 agent implementation methods: Random decision, Monte Carlo tree search, and Reinforcement learning neural network.
+There are 2 agent implementation methods: Random decision and Monte Carlo Tree Search (MCTS).
 
 \subsection{Random decision}
 The agent constructed using the random decision method will uniformly select an action from all legal actions at the current state. The list of legal actions has a \gls{discrete-uniform-distribution}, with each action having an equal likelihood of being chosen. % TODO: cite Wiki: discrete uniform distribution
@@ -49,20 +49,43 @@ The agent constructed using the random decision method will uniformly select an 
 % The agent built with random decision method will randomly select actions where all action has a uniform probability to be picked.
 
 \subsection{Monte Carlo tree search (MCTS)} % TODO: add problem with current MCTS and Root
-The agent will generate a tree search at the current state, determine which action has the highest probability of winning the game, and take that action. The winning probability of each action will be calculated using the MCTS approach. 
+The agent will perform a tree search at the current state, determine which action has the highest probability of winning the game, and take that action. The winning probability of each action will be calculated using the MCTS approach.
 
-Because of the nondetermism mechanism in games, we use a specific variant of MCTS, Open-Loop MCTS.
+% TODO: rework this sentence: "The winning probability of each action will be calculated using the MCTS approach."
 
-\subsection{Reinforcement learning neural network (RLNN)} % TODO
-The agent constructed using RLNN will use RNN type model, taking the current state, past states, and past actions as input and outputing the probability of choosing each action from all legal actions in the current state. Then calculate the reward of that action using the reward function, which is yet to be defined. Adjust the neural network according to the reward, and adjust the agent’s current state to the new state in the feedback. % unconfirmed
+\subsubsection{One-Depth MCTS}
+``One-Depth MCTS'' is an MCTS agent that we implemented as a proof-of-concept for demonstrating that MCTS algorithm works with \RootB{}. It is called One-Depth because it only performs the legal action then immediately rollout from that state; not making any expansion down more than the first depth.
 
+\subsubsection{General MCTS}
+``General MCTS'' is the main MCTS algorithm in our project. We use a specific variant of MCTS called Open-Loop MCTS as a basis of implementation for this agent due to nondeterministic mechanism in this board game.
 
+General MCTS has multiple parameters which can be customized to create multiple variants of MCTS. There are 6 parameters that we implemented, including: \texttt{reward-function}, \texttt{expand-count}, \texttt{rollout-no}, \texttt{time-limit}, \texttt{action-count-limit}, and \texttt{best-action-policy}.
 \begin{enumerate}
-  \item Agent: the player that's playing as \Marquise{} faction or \Eyrie{} faction
-  \item Environment: the map, opponent's state and action, draw pile, etc. in \RootOurs % not sure
-  \item State: all game components that belonged to the player
-  \item Reward: victory points earned, getting a win, or taking hold of clearing with matching suit to the played dominance card, all combined together through the reward function 
-  \item Policy: the neural network
+  \item \textbf{\texttt{reward-function}}: The MCTS must determine how ``good'' the state at the end of a rollout is. This is done using the reward-function. There are 4 options for this parameters:
+  \begin{itemize}
+    \item \texttt{win}: considers whether the player wins at the current state; 0
+    \item \texttt{vp-difference}:
+    \item \texttt{vp-difference-bin}:
+    \item \texttt{vp-difference-relu}:
+  \end{itemize}  
 \end{enumerate}
+
+
+
+
+
+
+
+% \subsection{Reinforcement learning neural network (RLNN)}
+% The agent constructed using RLNN will use RNN type model, taking the current state, past states, and past actions as input and outputing the probability of choosing each action from all legal actions in the current state. Then calculate the reward of that action using the reward function, which is yet to be defined. Adjust the neural network according to the reward, and adjust the agent’s current state to the new state in the feedback. % unconfirmed
+
+
+% \begin{enumerate}
+%   \item Agent: the player that's playing as \Marquise{} faction or \Eyrie{} faction
+%   \item Environment: the map, opponent's state and action, draw pile, etc. in \RootOurs % not sure
+%   \item State: all game components that belonged to the player
+%   \item Reward: victory points earned, getting a win, or taking hold of clearing with matching suit to the played dominance card, all combined together through the reward function 
+%   \item Policy: the neural network
+% \end{enumerate}
 
 % TODO: add evaluation method

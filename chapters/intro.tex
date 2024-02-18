@@ -13,7 +13,9 @@ This project focuses on the recommended scenario in a two-player game of \Marqui
 %
 %%%%%
 
-This project aims to create an artificial intelligence (AI) system capable of playing the board game ``Root'' that is more intelligent than the AIs in the \RootV{}. The agents will be built using different methods, including Monte Carlo tree search, neural network reinforcement learning, random, human player, etc. Full details on each AI agent implementation method and their concepts are explained in this document.
+Our goal is to develop an artificial intelligence (AI) system capable of playing the board game ``Root''. Our objective is to create an intelligent agent that can take game state as input and make intelligent decisions in each phase.
+
+This project aims to create an artificial intelligence (AI) system capable of playing the board game ``Root''. The agents will be built using Monte Carlo Tree Search algorithm, and uniform random method. Full details on each AI agent implementation method and their concepts are explained in this document.
 
 % Root features a variety of factions, each with its unique gameplay mechanics and goals. 
 
@@ -26,13 +28,14 @@ This project aims to create an artificial intelligence (AI) system capable of pl
 
 \section{\ifenglish Objectives\else วัตถุประสงค์ของโครงงาน\fi}
 \begin{itemize}
-    \item To create an artificial intelligence (AI) that can play the board game ``Root'' and win against the AIs in the \RootV{}.
+    \item To create an artificial intelligence (AI) that can play the board game ``Root''.
+    \item To find the best Monte Carlo Tree Search algorithm variant for playing the board game ``Root'' for each faction.
     % \item To create a version of Root video game with integrated AI agent training lifecycle which also allows human players to play against the AI agents.
 \end{itemize}
 
 \section{\ifenglish Project scope\else ขอบเขตของโครงงาน\fi}
 % TODO: should i use AI agent training wrapper? training framework? training lifecycle?
-The project is a software consisting of two main components: 1.) \textit{\RootOurs{}}, a minimal version of \RootV{}. 2.) \textit{\RootAI{}}, an AI agent training framework for \RootOurs{}. The scope of the project are as follows:
+The project is a software consisting of two main components: 1.) \textit{\RootOurs{}}, a minimal version of \RootV{}. 2.) \textit{\RootAI{}}, an AI agent framework for \RootOurs{}. The scope of the project are as follows:
 \begin{enumerate}
     \item Implementation of \RootOurs{}.
     \item Implementation of \RootAI{}.
@@ -46,10 +49,10 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
     \item Only ``Woodland'' map.
     \item Exclude \textit{forests} area.
     \item Exclude building type \textit{ruins}.
-    % \item \Marquise{} starts with their \textit{the Keep} token in the bottom right \textit{clearing}.
-    % \item \Marquise{} starts with their three starting buildings pre-placed.
-    % \item \Eyrie{} starts with a \textit{roost} in the top left clearing.
-    % \item \Eyrie{} starts with the \textit{charismatic} leader.
+    \item \Marquise{} starts with their \textit{the Keep} token in the bottom right \textit{clearing}.
+    \item \Marquise{} starts with their three starting buildings pre-placed.
+    \item \Eyrie{} starts with a \textit{roost} in the top left clearing.
+    \item \Eyrie{} starts with the \textit{charismatic} leader.
 \end{enumerate}
 
 \RootAI{} has the following features:
@@ -57,11 +60,10 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
     \item Importing and exporting of \RootOurs{}'s game state.
     \item Exporting of \RootOurs{}'s log.
     \item Interface for human interaction to an instance of \RootOurs{}.
-    \item Training and running AI agents built using the following methods:
+    \item Running AI agents built using the following methods:
     \begin{itemize}
         \item Random decision
-        \item Monte Carlo tree search (MCTS)
-        \item Reinforcement learning neural network
+        \item Monte Carlo Tree Search (MCTS)
     \end{itemize}
 \end{enumerate}
 
@@ -70,17 +72,14 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
 % \subsection{\ifenglish Software scope\else ขอบเขตด้านซอฟต์แวร์\fi}
 
 \section{\ifenglish Expected outcomes\else ประโยชน์ที่ได้รับ\fi}
+An AI for each faction that excels at playing as that faction is created, i.e.:
 \begin{itemize}
-    \item The resulting AIs are able to win against \RootV{}'s corresponding opponent faction AI, i.e.:
-    \begin{itemize}
-        \item Resulting \Marquise{} AI have higher win rate against \RootV{}'s \Eyrie{} AI.
-        \item Resulting \Eyrie{} AI have higher win rate against \RootV{}'s \Marquise{} AI.
-    \item Root players have a more challenging opponent when playing by themselves.
-    \end{itemize}
+    \item One of the variants for \Marquise{} AI have higher average win rate   against all other \Eyrie{} AI variants
+    \item One of the variants for \Eyrie{} AI have higher average win rate against all other \Marquise{} AI variants
 \end{itemize}
 
 \section{\ifenglish Technology and tools\else เทคโนโลยีและเครื่องมือที่ใช้\fi}
-Python is chosen as the language for this project's implementation due to its flexibility of integrating with AI related libraries such as PyTorch and Tensorflow. 
+Python is chosen as the language for this project's implementation due to its flexibility, useful libraries, and portability.
 
 % \subsection{\ifenglish Hardware technology\else เทคโนโลยีด้านฮาร์ดแวร์\fi}
 % \textit{Maybe add the gpu use and cloud use in the future}
@@ -96,8 +95,6 @@ Python is chosen as the language for this project's implementation due to its fl
 \textbf{Important Libraries:}
 \begin{itemize}
     \item Pygame (UI) 
-    \item PyTorch (RLNN)
-    \item TensorFlow (RLNN)
 \end{itemize}
 
 \section{\ifenglish Project plan\else แผนการดำเนินงาน\fi}
@@ -117,7 +114,10 @@ Python is chosen as the language for this project's implementation due to its fl
 \section{\ifenglish Roles and responsibilities\else บทบาทและความรับผิดชอบ\fi}
 In \RootOurs{}, base classes and faction-neutral functions are divided equally among the two of us. Pawaret is responsible for \Marquise{}-related functionalities. Baangkok is responsible for \Eyrie{}-related functionalities.
 
-In \RootAI{}, each step is divided equally, starting from method research to implementation to testing. This allows us to continuously exchange our knowledge about the current AI agent implementation method, allowing us to create and improve each AI agent to have good performance.
+In \RootAI, Baangkok is responsible for implementing the base framework, the Random agent, and the One-Depth MCTS agent. Pawaret is responsible for the core General MCTS agent methods such as Selection, Expansion, Determinization, and Backpropagation. Baangkok also has some contributions to the General MCTS agent such as Parallel rollout and reward functions. Lastly, Pawaret is responsible for running and supervising the simulations.
+
+
+% In \RootAI{}, each step is divided equally, starting from method research to implementation to testing. This allows us to continuously exchange our knowledge about the current AI agent implementation method, allowing us to create and improve each AI agent to have good performance.
 
 \section{\ifenglish%
 Impacts of this project on society, health, safety, legal, and cultural issues

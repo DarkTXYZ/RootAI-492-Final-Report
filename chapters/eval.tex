@@ -12,7 +12,7 @@
 
 % ในบทนี้จะทดสอบเกี่ยวกับการทำงานในฟังก์ชันหลักๆ
 
-\section{Experimental Setup}
+\section{Experiment Setup}
 
 \subsection{Introductory Experiment}
 For the introductory experiment, we will use random decision agent as it has the most basic implementation. Since we have not implemented \RootAI, we will conduct experiments by simulating \RootOurs \ with random actions option turned on, and collect the results. 
@@ -29,9 +29,19 @@ We will run 1000 \glspl{playout} using a random decision agent as each faction a
 \end{itemize}
 
 \subsection{Main Experiment}
-For the main experiment, we will make multiple variants of MCTS and have them play against a ``base'' MCTS variant. 
+For the main experiment, we will make multiple variants of MCTS and have them play against a ``base'' MCTS variant.
 
 The base MCTS agent were used to play against the Random agent. The results shows that both \Marquise{} and \Eyrie{}, with base MCTS agent are able to consistently win most of the rounds against the Random agent.
+
+The base MCTS agent's parameters are as follows
+\begin{enumerate}
+    \item \textbf{\texttt{reward-function}}: \texttt{vp-difference}
+    \item \textbf{\texttt{expand-count}}: 100
+    \item \textbf{\texttt{rollout-no}}: 1
+    \item \textbf{\texttt{time-limit}}: -1
+    \item \textbf{\texttt{action-count-limit}}: 20
+    \item \textbf{\texttt{best-action-policy}}: \texttt{robust}
+\end{enumerate}
 
 The main experiment's MCTS variants are permutations of these parameters:
 \begin{enumerate}
@@ -44,19 +54,20 @@ The main experiment's MCTS variants are permutations of these parameters:
     % TODO: why is UCB removed?
     % TODO: recheck the reasons for these param choices
 \end{enumerate}
+These parameters resulted in 108 variants for each faction.
 
-The base MCTS agent's parameters are as follows
-\begin{enumerate}
-    \item \textbf{\texttt{reward-function}}: \texttt{vp-difference}
-    \item \textbf{\texttt{expand-count}}: 100
-    \item \textbf{\texttt{rollout-no}}: 1
-    \item \textbf{\texttt{time-limit}}: -1
-    \item \textbf{\texttt{action-count-limit}}: 20
-    \item \textbf{\texttt{best-action-policy}}: \texttt{robust}
-    % TODO: why is UCB removed?
-\end{enumerate}
+The main experiment consists of 2 phases.
 
-% TODO: write about 2 phases
+\subsubsection{Phase 1}
+For the first phase, as there are 108 MCTS variants and 2 factions, there will be 216 battles in this phase. Each battle will be run for 1000 rounds to minimize random deviation.
+
+\subsubsection{Phase 2}
+For the second phase, the top variants from the first phase will be selected to continue in this phase. The metrics of selection is ``win rate'' against the base variant. Unless some variant achieved 100\% win rate (win all 1000 rounds), it is unlikely that the variants will have overlapping win rates, though if that were to be the case, other metrics will be used such as ``average turns to win'', etc. The top 5 variants for each faction will be selected. Then they all play against each of the other faction's, i.e., a ``Team Round-Robin''. There will be 25 battles in this phase. Each battle will be run for 1000 rounds.
+
+\subsubsection{Final}
+Finally, the best performing variant from each faction will be selected to be the ``best MCTS variant'' for that faction.
+
+
 
 \section{Results}
 

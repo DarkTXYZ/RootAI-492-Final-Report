@@ -14,8 +14,8 @@
 
 \section{Experimental Setup}
 
-\subsection{Introductory experiment}
-For introductory experiment, we will use random decision agent as it has the most basic implementation. Since we have not implemented \RootAI, we will conduct experiments by simulating \RootOurs \ with random actions option turned on, and collect the results. 
+\subsection{Introductory Experiment}
+For the introductory experiment, we will use random decision agent as it has the most basic implementation. Since we have not implemented \RootAI, we will conduct experiments by simulating \RootOurs \ with random actions option turned on, and collect the results. 
 
 We will run 1000 \glspl{playout} using a random decision agent as each faction and collect the following statistics:
 \begin{itemize}
@@ -28,9 +28,39 @@ We will run 1000 \glspl{playout} using a random decision agent as each faction a
     \item dominance card of the winning faction: none / bird / fox / rabbit / mouse
 \end{itemize}
 
+\subsection{Main Experiment}
+For the main experiment, we will make multiple variants of MCTS and have them play against a ``base'' MCTS variant. 
+
+The base MCTS agent were used to play against the Random agent. The results shows that both \Marquise{} and \Eyrie{}, with base MCTS agent are able to consistently win most of the rounds against the Random agent.
+
+The main experiment's MCTS variants are permutations of these parameters:
+\begin{enumerate}
+    \item \textbf{\texttt{reward-function}}: \texttt{win}, \texttt{vp-difference}, \texttt{vp-difference-relu} (\texttt{vp-difference-bin} is excluded because it is the same as \texttt{vp-difference-relu} but is unable to separate a ``very good'' rollout from a ``good'' rollout.)
+    \item \textbf{\texttt{expand-count}}: 50, 100, 200
+    \item \textbf{\texttt{rollout-no}}: 1 (fixed to 1 because we have, in a way, eliminated nondeterminism in our simulation)
+    \item \textbf{\texttt{time-limit}}: -1 (means no time limit. because the rollout time are so fast that the time limit is ignorable)
+    \item \textbf{\texttt{action-count-limit}}: 20, 100, 200, -1 (-1 means no limit)
+    \item \textbf{\texttt{best-action-policy}}: \texttt{max}, \texttt{robust}, \texttt{secure}
+    % TODO: why is UCB removed?
+    % TODO: recheck the reasons for these param choices
+\end{enumerate}
+
+The base MCTS agent's parameters are as follows
+\begin{enumerate}
+    \item \textbf{\texttt{reward-function}}: \texttt{vp-difference}
+    \item \textbf{\texttt{expand-count}}: 100
+    \item \textbf{\texttt{rollout-no}}: 1
+    \item \textbf{\texttt{time-limit}}: -1
+    \item \textbf{\texttt{action-count-limit}}: 20
+    \item \textbf{\texttt{best-action-policy}}: \texttt{robust}
+    % TODO: why is UCB removed?
+\end{enumerate}
+
+% TODO: write about 2 phases
+
 \section{Results}
 
-\subsection{Introductory experiment's results}
+\subsection{Introductory Experiment's Results}
 
 \begin{figure}
     \centering

@@ -142,6 +142,22 @@ Root is an imperfect information game, which means generating a \gls{complete-ga
 \section{Monte Carlo tree search}
 \cite{Bradberry_Jeff-2015} Monte Carlo tree search (MCTS) is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games . In such applications, MCTS is used to solve the \gls{game-tree}, i.e., identify the decisions that maximize the probability of leading the player to a winning state. This is done by running many \glspl{playout}. The results of each \gls{playout} are then propagated back through the game tree to update the probability of that state being chosen more or less. Each round of MCTS consists of four steps: Selection, Expansion, Simulation, and Backpropagation.
 
+\subsection{MCTS Steps}
+% NOT SURE IF THIS SHOULD BE HERE
+% TODO: insert images for all subsubsection here
+% TODO: insert citation "A Survey of Monte Carlo Tree Search Methods"
+\subsubsection{Selection}
+Starting at the root node, select the child node by tree policy. Then recursively select child nodes through the tree until an ``expandable node'' is reached. A node is expandable if it represents a nonterminal state and has unvisited children (i.e. unexpanded).
+
+\subsubsection{Expansion}
+One (or more) child nodes are added to expand the tree, according to the available actions.
+
+\subsubsection{Simulation (Rollout)}
+A simulation is run from the new node(s) according to the default policy to produce an outcome.
+\subsubsection{Backpropagation}
+The simulation result is ``backed up'' (i.e. backpropagated) through the selected nodes to update their statistics.
+
+
 \subsection{Exploration and exploitation}
 Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \glspl{playout}. This is called exploitation.
 

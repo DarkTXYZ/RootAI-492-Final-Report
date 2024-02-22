@@ -54,7 +54,7 @@ The agent will perform a tree search at the current state, determine which actio
 % TODO: rework this sentence: "The winning probability of each action will be calculated using the MCTS approach."
 
 \subsubsection{One-Depth MCTS}
-``One-Depth MCTS'' is an MCTS agent that we implemented as a proof-of-concept for demonstrating that MCTS algorithm works with \RootB{}. It is called One-Depth because it only performs the legal action then immediately rollout from that state; not making any expansion down more than the first depth.
+``One-Depth MCTS'', also known as \textit{Flat UCB} \cite{mcts-survey}, is an MCTS agent that we implemented as a proof-of-concept for demonstrating that MCTS algorithm works with \RootB{}. It is called One-Depth because it only performs the legal action then immediately rollout from that state; not making any expansion down more than the first depth.
 
 \subsubsection{General MCTS}
 ``General MCTS'' is the main MCTS algorithm in our project. We use a specific variant of MCTS called Open-Loop MCTS as a basis of implementation for this agent due to nondeterministic mechanism in this board game.
@@ -73,11 +73,10 @@ General MCTS has multiple parameters which can be customized to create multiple 
   \item \textbf{\texttt{rollout-no}}: Whenever the MCTS expands, it must perform a number rollouts to determine the reward of that node. This parameter controls the amount of rollouts per node. A rollout is bound to come across some nondeterministic actions which could result in varying outcome of that rollout. Multiple rollouts per node can be used to help mitigate the varying outcomes.
   \item \textbf{\texttt{time-limit}}: A rollout may encounter an infinite loop or may take a very long time. This parameter controls the time limit for each rollout. A rollout will immediately stop at its current state if a time limit is exceeded. % Note that from our experience, a rollout is pretty fast.
   \item \textbf{\texttt{action-count-limit}}: A rollout does not necessarily need to reach a game-ending state to stop. This parameter controls how many actions will be executed before stopping a rollout, i.e., how deep into the future will a rollout look.
-  \item \textbf{\texttt{best-action-policy}}: When the MCTS algorithm finishes, it must choose which legal action is the best. This parameter controls how the ``best'' legal action is picked. There are 4 options for this parameter:
+  \item \textbf{\texttt{best-action-policy}}: As described in section \ref{winning-action}, when the MCTS algorithm finishes, it must choose which legal action is the best. This parameter controls how the ``best'' legal action is picked. There are 3 options for this parameter:
   \begin{itemize}
     \item \texttt{max}: picks the legal action with the highest reward
     \item \texttt{robust}: picks the most visited legal action
-    \item \texttt{UCB}: picks the legal action that maximises the upper confidence bound
     \item \texttt{secure}: picks the legal action that maximises the lower confidence bound
   \end{itemize}
 \end{enumerate}

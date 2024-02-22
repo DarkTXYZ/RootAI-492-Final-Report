@@ -157,9 +157,27 @@ A simulation is run from the new node(s) according to the default policy to prod
 \subsubsection{Backpropagation}
 The simulation result is ``backed up'' (i.e. backpropagated) through the selected nodes to update their statistics.
 
-
 \subsection{Exploration and exploitation}
 Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \glspl{playout}. This is called exploitation.
+
+\subsection{UCB policy}
+\cite{RN2020} One of the most efficient tree policies used in MCTS is UCB (Upper Confidence Bound). As UCB is used in bandit problems, the process in selection phase can be modelled as a multi-armed bandit problem. A child node j is selected to maximize:
+
+\[ \textit{UCB} = \overline{X_j} + 2C_p\sqrt{\frac{2\ln n}{n_j}} \]
+
+when $n$ is the number of times a parent node has visited, $n_j$ is the number of times a child node has visited, $X_j$ is the average reward of the parent node, and $C_p > 0$ is a constant.
+
+In the formula, the two terms are the exploitation term and the exploration term, respectively. If a node has been explored a few times, the exploration term will be high as a denominator $n_j$. $C_p$ is a constant that balances between exploitation and exploration.
+
+\subsection{Winning action selection} \label{winning-action}
+MCTS continues to run four steps until the endgame condition is met or the computation budget is reached. Then, the action of the root node is selected by some criteria. \newline \cite{mcts-survey} Browne says that there are four criteria for selecting winning action, based on their survey:
+
+\begin{enumerate}
+  \item \textbf{Max}: Select the action that gives the most rewards.
+  \item \textbf{Robust}: Select the action that visited the most. 
+  \item \textbf{Max-Robust}: Select the action that has the most rewards and visits. If none exist, continue searching until they are found.
+  \item \textbf{Secure}: Select the action that maximizes the lower confidence bound.
+\end{enumerate}
 
 % TODO: add citations to MCTS wikipedia
 
@@ -169,6 +187,7 @@ Maintaining a balance between exploration and exploitation is an important part 
 
 An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only stores the statistics in the nodes, not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state but a series of actions executed starting from the initial state of the game.
 
+\cite{mcts-survey} Also, we handle the uncertainty by using \textit{determinization}, the process of sampling all possible outcomes of all chance events, making it fully observable.
 
 % \section{Reinforcement learning} % TODO: 
 % \cite{Reinforcement-Learning} Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are five main elements of reinforcement learning:

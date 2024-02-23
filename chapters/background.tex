@@ -190,7 +190,7 @@ In a deterministic game, MCTS can generate future states in nodes that will be f
 
 An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only stores the statistics in the nodes, not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state but a series of actions executed starting from the initial state of the game.
 
-\cite{mcts-survey} Also, we handle the uncertainty by using \textit{determinization}, the process of sampling all possible outcomes of all chance events, making it fully observable.
+Uncertainty in the simulation is handled by using \textit{determinization}, the process of sampling all possible outcomes of all chance events, making it fully observable \cite{mcts-survey}.
 
 % \section{Reinforcement learning} % TODO: 
 % \cite{Reinforcement-Learning} Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are five main elements of reinforcement learning:

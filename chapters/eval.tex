@@ -31,7 +31,7 @@ We will run 1000 \glspl{playout} using a random decision agent as each faction a
 \subsection{Main Experiment}
 The main experiment consists of 2 phases. We will make multiple variants of MCTS and have them play against a ``base'' agent. 
 
-\subsubsection{Setup}
+\subsubsection{Setup} \label{main-exp-setup}
 The base agent is an MCTS agent. It was used to play against the Random agent. The results shows that both \Marquise{} and \Eyrie{}, with base agent are able to consistently win most of the rounds against the Random agent. This means that we cannot use the Random agent as base since all MCTS agents would likely have very high win rate.
 
 The base agent's MCTS parameters are as follows:

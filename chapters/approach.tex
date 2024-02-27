@@ -57,7 +57,7 @@ The agent will perform a tree search at the current state, determine which actio
 ``One-Depth MCTS'', similar to \textit{Flat Monte Carlo} \cite{mcts-survey}, is an MCTS agent that we implemented as a proof-of-concept for demonstrating that MCTS algorithm works with \RootB{}. It is called One-Depth because it only performs the legal action then immediately rollout from that state; not making any expansion down more than the first depth.
 
 \subsubsection{General MCTS}
-``General MCTS'' is the main MCTS algorithm in our project. We use a specific variant of MCTS called Open-Loop MCTS as a basis of implementation for this agent due to nondeterministic mechanism in this board game.
+``General MCTS'' is the main MCTS algorithm in our project. We use a specific variant of MCTS called Open-Loop MCTS as a basis of implementation for this agent due to nondeterministic mechanism in this board game and use the UCB policy as a tree policy.
 
 General MCTS has multiple parameters which can be customized to create multiple variants of MCTS. There are 6 parameters that we implemented, including: \texttt{reward-function}, \texttt{expand-count}, \texttt{rollout-no}, \texttt{time-limit}, \texttt{action-count-limit}, and \texttt{best-action-policy}.
 
@@ -66,17 +66,18 @@ General MCTS has multiple parameters which can be customized to create multiple 
   \begin{itemize}
     \item \texttt{win}: considers whether the player wins; 1 if win, 0 otherwise
     \item \texttt{vp-difference}: considers the VP differences of the current player and the enemy player; \texttt{vp\_player} - \texttt{vp\_enemy}
-    \item \texttt{vp-difference-bin}: considers the VP differences; 1 if > 0,  0 otherwise
+    \item \texttt{vp-difference-bin}: considers the VP differences is \texttt{d}; 1 if d > 0,  0 otherwise
     \item \texttt{vp-difference-relu}: considers the VP differences is \texttt{d}; \texttt{d} if \texttt{d} > 0, 0 otherwise  
   \end{itemize}
   \item \textbf{\texttt{expand-count}}: Whenever the MCTS expands the game tree, a node is added to the tree. This parameter limits the number of expansion. We could expand indefinitely until the entire tree is searched, which should result in a better outcome, but that would take too much computation time. That is the reason that this parameter exists.
   \item \textbf{\texttt{rollout-no}}: Whenever the MCTS expands, it must perform a number rollouts to determine the reward of that node. This parameter controls the amount of rollouts per node. A rollout is bound to come across some nondeterministic actions which could result in varying outcome of that rollout. Multiple rollouts per node can be used to help mitigate the varying outcomes.
   \item \textbf{\texttt{time-limit}}: A rollout may encounter an infinite loop or may take a very long time. This parameter controls the time limit for each rollout. A rollout will immediately stop at its current state if a time limit is exceeded. % Note that from our experience, a rollout is pretty fast.
   \item \textbf{\texttt{action-count-limit}}: A rollout does not necessarily need to reach a game-ending state to stop. This parameter controls how many actions will be executed before stopping a rollout, i.e., how deep into the future will a rollout look.
-  \item \textbf{\texttt{best-action-policy}}: As described in Section \ref{winning-action}, when the MCTS algorithm finishes, it must choose which legal action is the best. This parameter controls how the ``best'' legal action is picked. There are 3 options for this parameter:
+  \item \textbf{\texttt{best-action-policy}}: As described in Section \ref{winning-action}, when the MCTS algorithm finishes, it must choose which legal action is the best. This parameter controls how the ``best'' legal action is picked. There are 4 options for this parameter:
   \begin{itemize}
     \item \texttt{max}: picks the legal action with the highest reward
     \item \texttt{robust}: picks the most visited legal action
+    \item \texttt{UCB}: picks the legal action that maximises the upper confidence bound
     \item \texttt{secure}: picks the legal action that maximises the lower confidence bound
   \end{itemize}
 \end{enumerate}

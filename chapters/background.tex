@@ -161,7 +161,7 @@ The simulation result is ``backed up'' (i.e. backpropagated) through the selecte
 Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \glspl{playout}. This is called exploitation.
 
 \subsection{UCB policy}
-One of the most efficient tree policies used in MCTS is UCB (Upper Confidence Bound) \cite{RN2020}. As UCB is used in bandit problems, the process in selection phase can be modelled as a multi-armed bandit problem. A child node j is selected to maximize:
+One of the most commonly used tree policies in MCTS is UCB (Upper Confidence Bound) \cite{RN2020}. As UCB is used in bandit problems, the process in selection phase can be modelled as a multi-armed bandit problem. A child node j is selected to maximize:
 
 \begin{equation}
   \label{eq:UCB}
@@ -190,7 +190,7 @@ In a deterministic game, MCTS can generate future states in nodes that will be f
 
 An approximate solution is to use an Open Loop MCTS. Open Loop MCTS only stores the statistics in the nodes, not the states. Instead, the state at a node must be computed by playing actions along the path from the root node to the current node. This way, a node does not represent a state but a series of actions executed starting from the initial state of the game.
 
-Uncertainty in the simulation is handled by using \textit{determinization}, the process of sampling all possible outcomes of all chance events, making it fully observable \cite{mcts-survey}.
+To handle imperfect information and uncertainty, a game can be converted into a determistic game using \textit{determinization}, the process of sampling all possible outcomes of all chance events, making it fully observable \cite{mcts-survey}. For example, rolling dice can be simulated with a predetermined sequence of dice rolls.
 
 % \section{Reinforcement learning} % TODO: 
 % \cite{Reinforcement-Learning} Reinforcement learning (RL) is a popular method used in many branches of applications, including game optimization, industry automation, telecommunications, etc. There are five main elements of reinforcement learning:

@@ -14,9 +14,10 @@ Root is an \textbf{imperfect information game}: a game where there is informatio
 Root is a \textbf{non-deterministic game}: a game where there is some element of randomness involved, such as rolling dice or shuffling cards. Root has both, rolling dice in battle and drawing cards from a shuffled draw pile.
 
 \subsection{Brief Rules of Root} \label{brief-rules-of-root}
-Root is a 2-4 player turn-based game where you play as one of the four factions, fighting against other factions to be the ruler of woodland.
 
-The rule is simple: the player who gets 30 victory points or plays and completes the dominance card (the card that changes the endgame winning condition) first wins. The players play on the map of Woodland (Figure \ref{fig:root-game-board}), which contains 12 clearings, each with different suits and a different number of slots for building. There are also paths that connect those clearings, moving warriors from one clearing to another.
+Root is a turn-based game for 2-4 players in which you fight as one of four factions against other factions to take control of the ``Woodland''.
+
+The rule is simple: The player who scores 30 victory points or plays the dominance card and fulfills its condition (the card that changes the endgame win condition) first wins. The players play on the map of Woodland (Figure \ref{fig:root-game-board}), which contains 12 clearings, each with different suits and a different number of slots for building. There are also paths that connect those clearings, moving warriors from one clearing to another.
 
 \begin{figure}
   \begin{center}
@@ -140,12 +141,21 @@ Root is an imperfect information game, which means generating a \gls{complete-ga
 % TODO: add citations for the Chess and Go algorithms, complexity.
 
 \section{Monte Carlo tree search}
-Monte Carlo tree search (MCTS) \cite{Bradberry_Jeff-2015} is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games. In such applications, MCTS is used to solve the \gls{game-tree}, i.e., identify the decisions that maximize the probability of leading the player to a winning state. This is done by running many \glspl{playout}. The results of each \gls{playout} are then propagated back through the game tree to update the probability of that state being chosen more or less. Each round of MCTS consists of four steps: Selection, Expansion, Simulation, and Backpropagation.
+Monte Carlo tree search (MCTS) \cite{Bradberry_Jeff-2015} is a search algorithm commonly employed in decision processes, particularly within software designed for playing board games. In such applications, MCTS is used to solve the \gls{game-tree}, i.e., identify the decisions that maximize the probability of leading the player to a winning state. This is done by running many \glspl{playout}. The results of each \gls{playout} are then propagated back through the game tree to update the probability of that state being chosen more or less. Each round of MCTS consists of four steps: Selection, Expansion, Simulation, and Backpropagation, as shown in figure \ref{fig:mcts-steps}.
 
 \subsection{MCTS Steps}
 % NOT SURE IF THIS SHOULD BE HERE
 % TODO: insert images for all subsubsection here
 % TODO: insert citation "A Survey of Monte Carlo Tree Search Methods"
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\textwidth]{mcts-steps.jpg}
+  \end{center}
+  \caption{MCTS steps, credit to \cite{mcts-survey}}
+  \label{fig:mcts-steps}
+\end{figure}
+
 \subsubsection{Selection}
 Starting at the root node, select the child node by tree policy. Then recursively select child nodes through the tree until an ``expandable node'' is reached. A node is expandable if it represents a nonterminal state and has unvisited children (i.e. unexpanded).
 

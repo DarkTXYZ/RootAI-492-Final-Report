@@ -2,11 +2,31 @@
 
 \section{\ifenglish Conclusions\else สรุปผล\fi}
 
-นศ. ควรสรุปถึงข้อจำกัดของระบบในด้านต่างๆ ที่ระบบมีในเนื้อหาส่วนนี้ด้วย
+An online forum discussion (and our personal experiences) stated that, a normal game of Root lasts 7-10 rounds. For a 2 players scenario, this is around 14-20 turns. Comparing that to our top performing MCTS AI agents which have 16.79 and 14.52 average turns to win, \Marquise{} and \Eyrie{}, respectively. We have concluded that our MCTS AI agents are able to intelligently play \RootB{}.
+
+The best MCTS variant for \Marquise{} achieved average win rate against top 5 \Eyrie{} agents of 60\%. It has the following parameters:
+\item \textbf{\texttt{reward-function}}: \texttt{vp-difference-relu}
+\item \textbf{\texttt{expand-count}}: 200
+\item \textbf{\texttt{rollout-no}}: 1
+\item \textbf{\texttt{time-limit}}: -1 (no-limit)
+\item \textbf{\texttt{action-count-limit}}: 20
+\item \textbf{\texttt{best-action-policy}}: \texttt{secure}
+
+The best MCTS variant for \Eyrie{} achieved average win rate against top 5 \Marquise{} agents of 60\%. It has the following parameters:
+\item \textbf{\texttt{reward-function}}: \texttt{vp-difference-relu}
+\item \textbf{\texttt{expand-count}}: 200
+\item \textbf{\texttt{rollout-no}}: 1
+\item \textbf{\texttt{time-limit}}: -1 (no-limit)
+\item \textbf{\texttt{action-count-limit}}: 20
+\item \textbf{\texttt{best-action-policy}}: \texttt{secure}
 
 \section{\ifenglish Challenges\else ปัญหาที่พบและแนวทางการแก้ไข\fi}
 
-ในการทำโครงงานนี้ พบว่าเกิดปัญหาหลักๆ ดังนี้
+\begin{itemize}
+    \item We understimated the complexity of \RootB{}. We estimated to complete the core implementation of \RootOurs{} within 3 weeks but it has taken us 3 months. We should give more consideration to carefully estimating the size of the tasks so that we can better plan out the project.
+    \item For the MCTS algorithm to be intelligent, it must be able to look deep into multiple possibilities. To achieve this level of intelligence in an acceptable amount of time requires a high amount of processing power. The department's server, which has a lot of CPU cores, along with us reducing the number of variants to half, helped us achieve that. Otherwise, we wouldn't have been able to simulate as many battles as we did. This is another lesson in planning for a project that requires processing power; you need a lot of processing power if you don't want to spend a lot of time.
+    \item This project is more of a research-style than a software-development project. We have never done a project in this manner before and this is our first time doing it like this. We gained lots of experience from this.
+\end{itemize}
 
 \section{\ifenglish%
 Suggestions and further improvements

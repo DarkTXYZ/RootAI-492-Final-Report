@@ -17,15 +17,14 @@
 \subsection{Introductory Experiment}
 For the introductory experiment, we will use random decision agent as it has the most basic implementation. Since we have not implemented \RootAI, we will conduct experiments by simulating \RootOurs \ with random actions option turned on, and collect the results. 
 
-We will run 1000 \glspl{playout} using a random decision agent as each faction and collect the following statistics:
+We will run 100,000 \glspl{playout} using a random decision agent as each faction and collect the following statistics:
 \begin{itemize}
     \item winning faction: \Marquise{} / \Eyrie
-    \item winning condition: 30 victory points (vp) / dominance card (dominance)
+    \item winning condition: 30 victory points (vp)
     \item number of turns played (the number of birdsong phase played)
     \item whose turn was it when the game ends: \Marquise{} / \Eyrie
     \item victory points of \Marquise{} when the game ends
     \item victory points of \Eyrie{} when the game ends
-    \item dominance card of the winning faction: none / bird / fox / rabbit / mouse
 \end{itemize}
 
 \subsection{Main Experiment}
@@ -58,10 +57,10 @@ The main experiment's MCTS variants are permutations of these parameters:
 These parameters resulted in 108 variants for each faction.
 
 \subsubsection{Phase 1}
-For the first phase, as there are 108 MCTS variants and 2 factions, there will be 216 battles in this phase. Each battle will be run for 1000 rounds to minimize random deviation.
+For the first phase, as there are 108 MCTS variants and 2 factions, there will be 216 battles in this phase. Each battle will be run for 100 rounds to minimize random deviation.
 
 \subsubsection{Phase 2}
-For the second phase, the top variants from the first phase will be selected to continue in this phase. The metrics of selection is ``win rate'' against the base variant. Unless some variant achieved 100\% win rate (win all 1000 rounds), it is unlikely that the variants will have overlapping win rates, though if that were to be the case, other metrics will be used such as ``average turns to win'', etc. The top 5 variants for each faction will be selected. Then they all play against each of the other faction's, i.e., a ``Team Round-Robin''. There will be 25 battles in this phase. Each battle will be run for 1000 rounds.
+For the second phase, the top variants from the first phase will be selected to continue in this phase. The metrics of selection is ``win rate'' against the base variant. Unless some variant achieved 100\% win rate (win all 100 rounds), it is unlikely that the variants will have overlapping win rates, though if that were to be the case, other metrics will be used such as ``average turns to win'', etc. The top 5 variants for each faction will be selected. Then they all play against each of the other faction's, i.e., a ``Team Round-Robin''. There will be 25 battles in this phase. Each battle will be run for 1000 rounds.
 
 \subsubsection{Final}
 Finally, the best performing variant from each faction will be selected to be the ``best MCTS variant'' for that faction.
@@ -72,127 +71,136 @@ Finally, the best performing variant from each faction will be selected to be th
 
 \subsection{Introductory Experiment's Results}
 
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width  = 0.5*\textwidth,
-            height = 8cm,
-            major x tick style = transparent,
-            ybar=2*\pgflinewidth,
-            bar width=24pt,
-            ymajorgrids = true,
-            ylabel = {Number of Wins},
-            symbolic x coords={Dominance Card,Victory Point},
-            xtick = data,
-            enlarge x limits=0.5,
-            enlarge y limits=0.1,
-            ymax = 1000,
-            legend cell align=left,
-            legend style={
-                at={(0.5,-0.15)},
-                anchor=north,
-                legend columns=-1
-            },
-            nodes near coords,
-        ]
-            \addplot[style={eyrie,fill=eyrie,mark=none}]
-                coordinates {(Dominance Card, 230) (Victory Point,44)};
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             width  = 0.5*\textwidth,
+%             height = 8cm,
+%             major x tick style = transparent,
+%             ybar=2*\pgflinewidth,
+%             bar width=24pt,
+%             ymajorgrids = true,
+%             ylabel = {Number of Wins},
+%             symbolic x coords={Dominance Card,Victory Point},
+%             xtick = data,
+%             enlarge x limits=0.5,
+%             enlarge y limits=0.1,
+%             ymax = 1000,
+%             legend cell align=left,
+%             legend style={
+%                 at={(0.5,-0.15)},
+%                 anchor=north,
+%                 legend columns=-1
+%             },
+%             nodes near coords,
+%         ]
+%             \addplot[style={eyrie,fill=eyrie,mark=none}]
+%                 coordinates {(Dominance Card, 230) (Victory Point,44)};
     
-            \addplot[style={marquise,fill=marquise,mark=none}]
-                 coordinates {(Dominance Card,695) (Victory Point,31)};
+%             \addplot[style={marquise,fill=marquise,mark=none}]
+%                  coordinates {(Dominance Card,695) (Victory Point,31)};
     
-            \legend{\Eyrie, \Marquise}
-        \end{axis}
-    \end{tikzpicture}
-    \caption{The number of wins grouped by winning condition}
-    \label{fig:wins-by-winner-condition}
-\end{figure}
-
-\subsubsection{High dominance card wins} \label{high-dominance-card-wins}
-Dominance card wins happen way more often than victory points wins as seen in Figure \ref{fig:wins-by-winner-condition}. Our speculation is that it is the action generation in \RootOurs{} that makes the ``Activate Dominance Card'' action have a higher likelihood of being picked. \RootOurs{} generates actions in a manner that is more suitable for human players, e.g., in the move action, the agent needs to select a start clearing, then a destination clearing, and then how many warriors to move. These are done as three separate actions, while in reality, the action of ``Move X warriors from A to B'' should be counted as one action.
-
-\subsubsection{\Marquise's high dominance card wins}
-\Marquise \ have a higher chance to win with dominance card as seen in Figure \ref{fig:wins-by-winner-condition}. Our speculation is that because at the start of the round, \Marquise{} have control over clearings except the one that \Eyrie{} starts in, therefore, if \Eyrie{} does not play properly to take control of the clearings, \Marquise{} will likely win upon the activation of a dominance card of any suit.
-
-Additionally, games with \Marquise's dominance card wins take fewer turns, as seen in Figure \ref{fig:turns-to-dominance-win}. Which should be due to \Marquise \ starting with more clearings under control.
-
-\subsubsection{\Eyrie's high victory points wins}
-\Eyrie \ have a higher chance to win with victory points as seen in Figure \ref{fig:wins-by-winner-condition}. Although there are not many data for rounds with victory points wins, our experience during development where we turned of the dominance card mechanics also have more \Eyrie \ victory points win. Our speculation is that this is due to \Eyrie's passive earning of victory points, all they need to do is protect their roosts and don't turmoil too much. In contrast, \Marquise \ needs to actively build buildings to earn victory points, which from the issue about action generation in Section \ref{high-dominance-card-wins}, action of building buildings might not have the correct likelihood of being picked.
-
-Additionally, games with \Eyrie's victory points wins take more turns than those with \Marquise's, as seen in Figure \ref{fig:turns-to-vp-win}. Which should be due to \Eyrie \ having passive, continuous earning of victory points every turn while \Marquise's earnings is more like a burst of victory points every time they build a building.
-
-
+%             \legend{\Eyrie, \Marquise}
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{The number of wins grouped by winning condition}
+%     \label{fig:wins-by-winner-condition}
+% \end{figure}
 
 \begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            ytick={1,2},
-            yticklabels={\Eyrie, \Marquise},
-            xlabel={Number of Turns},
-            ylabel={Faction},
-            boxplot/draw direction=x,
-        ]
-            \addplot+[
-                boxplot prepared={
-                    median=42, 
-                    upper quartile=59.5, 
-                    lower quartile=30, 
-                    upper whisker=304, 
-                    lower whisker=14
-                }, eyrie, draw=eyrie
-            ] coordinates {};
+    \begin{center}
+      \includegraphics[width=\textwidth]{./images/fig-random-random-win.jpeg}
+    \end{center}
+    \caption{The number of wins}
+    \label{fig:wins}
+  \end{figure}
 
-            \addplot+[
-                boxplot prepared={
-                    median=27.0, 
-                    upper quartile=47.0, 
-                    lower quartile=19.0, 
-                    upper whisker=339.0, 
-                    lower whisker=7.0
-                }, marquise, draw=marquise
-            ] coordinates {};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Number of turns to achieve a dominance win}
-    \label{fig:turns-to-dominance-win}
-\end{figure}
+% \subsubsection{High dominance card wins} \label{high-dominance-card-wins}
+% Dominance card wins happen way more often than victory points wins as seen in Figure \ref{fig:wins}. Our speculation is that it is the action generation in \RootOurs{} that makes the ``Activate Dominance Card'' action have a higher likelihood of being picked. \RootOurs{} generates actions in a manner that is more suitable for human players, e.g., in the move action, the agent needs to select a start clearing, then a destination clearing, and then how many warriors to move. These are done as three separate actions, while in reality, the action of ``Move X warriors from A to B'' should be counted as one action.
 
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            ytick={1,2,3,4},
-            yticklabels={\Eyrie, \Marquise},
-            xlabel={Number of Turns},
-            ylabel={Faction},
-            boxplot/draw direction=x,
-        ]
-            \addplot+[
-                boxplot prepared={
-                    median=33, 
-                    upper quartile=42, 
-                    lower quartile=26, 
-                    upper whisker=58, 
-                    lower whisker=18
-                }, eyrie, draw=eyrie
-            ] coordinates {};
+% \subsubsection{\Marquise's high dominance card wins}
+% \Marquise \ have a higher chance to win with dominance card as seen in Figure \ref{fig:wins}. Our speculation is that because at the start of the round, \Marquise{} have control over clearings except the one that \Eyrie{} starts in, therefore, if \Eyrie{} does not play properly to take control of the clearings, \Marquise{} will likely win upon the activation of a dominance card of any suit.
 
-            \addplot+[
-                boxplot prepared={
-                    median=25.0, 
-                    upper quartile=27.0, 
-                    lower quartile=22.5, 
-                    upper whisker=37.0, 
-                    lower whisker=17.0
-                }, marquise, draw=marquise
-            ] coordinates {};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Number of turns to achieve a victory points win}
-    \label{fig:turns-to-vp-win}
-\end{figure}
+% Additionally, games with \Marquise's dominance card wins take fewer turns, as seen in Figure \ref{fig:turns-to-dominance-win}. Which should be due to \Marquise \ starting with more clearings under control.
+
+\subsubsection{\Marquise's high victory points wins}
+
+% \Eyrie \ have a higher chance to win with victory points as seen in Figure \ref{fig:wins}. Although there are not many data for rounds with victory points wins, our experience during development where we turned of the dominance card mechanics also have more \Eyrie \ victory points win. Our speculation is that this is due to \Eyrie's passive earning of victory points, all they need to do is protect their roosts and don't turmoil too much. In contrast, \Marquise \ needs to actively build buildings to earn victory points, which from the issue about action generation in Section \ref{high-dominance-card-wins}, action of building buildings might not have the correct likelihood of being picked.
+
+% Additionally, games with \Eyrie's victory points wins take more turns than those with \Marquise's, as seen in Figure \ref{fig:turns-to-vp-win}. Which should be due to \Eyrie \ having passive, continuous earning of victory points every turn while \Marquise's earnings is more like a burst of victory points every time they build a building.
+
+
+
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             ytick={1,2},
+%             yticklabels={\Eyrie, \Marquise},
+%             xlabel={Number of Turns},
+%             ylabel={Faction},
+%             boxplot/draw direction=x,
+%         ]
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=42, 
+%                     upper quartile=59.5, 
+%                     lower quartile=30, 
+%                     upper whisker=304, 
+%                     lower whisker=14
+%                 }, eyrie, draw=eyrie
+%             ] coordinates {};
+
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=27.0, 
+%                     upper quartile=47.0, 
+%                     lower quartile=19.0, 
+%                     upper whisker=339.0, 
+%                     lower whisker=7.0
+%                 }, marquise, draw=marquise
+%             ] coordinates {};
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Number of turns to achieve a dominance win}
+%     \label{fig:turns-to-dominance-win}
+% \end{figure}
+
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             ytick={1,2,3,4},
+%             yticklabels={\Eyrie, \Marquise},
+%             xlabel={Number of Turns},
+%             ylabel={Faction},
+%             boxplot/draw direction=x,
+%         ]
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=33, 
+%                     upper quartile=42, 
+%                     lower quartile=26, 
+%                     upper whisker=58, 
+%                     lower whisker=18
+%                 }, eyrie, draw=eyrie
+%             ] coordinates {};
+
+%             \addplot+[
+%                 boxplot prepared={
+%                     median=25.0, 
+%                     upper quartile=27.0, 
+%                     lower quartile=22.5, 
+%                     upper whisker=37.0, 
+%                     lower whisker=17.0
+%                 }, marquise, draw=marquise
+%             ] coordinates {};
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Number of turns to achieve a victory points win}
+%     \label{fig:turns-to-vp-win}
+% \end{figure}
 
 % \begin{figure}
 %     \centering

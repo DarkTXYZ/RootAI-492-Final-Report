@@ -47,6 +47,7 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
     \item Only ``Woodland'' map.
     \item Exclude \textit{forests} area.
     \item Exclude building type \textit{ruins}.
+    \item Exclude dominance card mechanics.
     \item \Marquise{} starts with their \textit{the Keep} token in the bottom right \textit{clearing}.
     \item \Marquise{} starts with their three starting buildings pre-placed.
     \item \Eyrie{} starts with a \textit{roost} in the top left clearing.
@@ -116,7 +117,7 @@ Python is chosen as the language for this project's implementation due to its fl
 \section{\ifenglish Roles and responsibilities\else บทบาทและความรับผิดชอบ\fi}
 In \RootOurs{}, base classes and faction-neutral functions are divided equally among the two of us. Pawaret is responsible for \Marquise{}-related functionalities. Baangkok is responsible for \Eyrie{}-related functionalities.
 
-In \RootAI, Baangkok is responsible for implementing the base framework, the Random agent, and the One-Depth MCTS agent. Pawaret is responsible for the core General MCTS agent methods such as Selection, Expansion, Determinization, and Backpropagation. Baangkok also has some contributions to the General MCTS agent such as Parallel rollout and reward functions. Lastly, Pawaret is responsible for running and supervising the simulations.
+In \RootAI, Baangkok is responsible for implementing the base framework, the Random agent, and the One-Depth MCTS agent. Pawaret is responsible for the core General MCTS agent methods such as Selection, Expansion, Simulation, and Backpropagation. Baangkok also has some contributions to the General MCTS agent such as Parallel rollout and reward functions. Lastly, Pawaret is responsible for running and supervising the simulations.
 
 
 % In \RootAI{}, each step is divided equally, starting from method research to implementation to testing. This allows us to continuously exchange our knowledge about the current AI agent implementation method, allowing us to create and improve each AI agent to have good performance.

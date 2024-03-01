@@ -5,20 +5,23 @@
 An online forum discussion (and our personal experiences) stated that, a normal game of Root lasts 7-10 rounds. For a 2 players scenario, this is around 14-20 turns. Comparing that to our top performing MCTS AI agents which have 16.79 and 14.52 average turns to win, \Marquise{} and \Eyrie{}, respectively. We have concluded that our MCTS AI agents are able to intelligently play \RootB{}.
 
 The best MCTS variant for \Marquise{} achieved average win rate against top 5 \Eyrie{} agents of 60\%. It has the following parameters:
-\item \textbf{\texttt{reward-function}}: \texttt{vp-difference-relu}
-\item \textbf{\texttt{expand-count}}: 200
-\item \textbf{\texttt{rollout-no}}: 1
-\item \textbf{\texttt{time-limit}}: -1 (no-limit)
-\item \textbf{\texttt{action-count-limit}}: 20
-\item \textbf{\texttt{best-action-policy}}: \texttt{secure}
-
+\begin{itemize}
+    \item \textbf{\texttt{reward-function}}: \texttt{vp-difference-relu}
+    \item \textbf{\texttt{expand-count}}: 200
+    \item \textbf{\texttt{rollout-no}}: 1
+    \item \textbf{\texttt{time-limit}}: -1 (no-limit)
+    \item \textbf{\texttt{action-count-limit}}: 20
+    \item \textbf{\texttt{best-action-policy}}: \texttt{secure}
+\end{itemize}
 The best MCTS variant for \Eyrie{} achieved average win rate against top 5 \Marquise{} agents of 60\%. It has the following parameters:
-\item \textbf{\texttt{reward-function}}: \texttt{vp-difference-relu}
-\item \textbf{\texttt{expand-count}}: 200
-\item \textbf{\texttt{rollout-no}}: 1
-\item \textbf{\texttt{time-limit}}: -1 (no-limit)
-\item \textbf{\texttt{action-count-limit}}: 20
-\item \textbf{\texttt{best-action-policy}}: \texttt{secure}
+\begin{itemize}
+    \item \textbf{\texttt{reward-function}}: \texttt{vp-difference-relu}
+    \item \textbf{\texttt{expand-count}}: 200
+    \item \textbf{\texttt{rollout-no}}: 1
+    \item \textbf{\texttt{time-limit}}: -1 (no-limit)
+    \item \textbf{\texttt{action-count-limit}}: 20
+    \item \textbf{\texttt{best-action-policy}}: \texttt{secure}
+\end{itemize}
 
 \section{\ifenglish Challenges\else ปัญหาที่พบและแนวทางการแก้ไข\fi}
 

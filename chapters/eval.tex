@@ -202,6 +202,53 @@ Finally, the best performing variant from each faction will be selected to be th
 %     \label{fig:turns-to-vp-win}
 % \end{figure}
 
+\subsection{Main Experiment's Result}
+
+\subsubsection{Phase 1}
+
+\textbf{Top 5 Variants}
+
+In this section, parameters \texttt{rollout-no} and \texttt{time-limit} are not displayed in the tables as they are fixed to 1 and -1 (no-limit), respectively.
+
+The top 5 MCTS variants for \Marquise{} and \Eyrie{} are displayed in Table \
+
+\begin{table}%[h!]
+    \caption{\Marquise{}'s top 5 MCTS variants}
+    \label{tab:mar-top5}
+    \centering
+    \begin{tabular}{| c || P{1.2cm} | P{1.2cm} || P{4cm} | P{1.2cm} | P{1.2cm} | P{1.2cm} |} 
+        \hline
+        \bf config no. & \bf  win rate & \bf average match length & \bf reward function & \bf expand count & \bf action count limit & \bf best action policy \\ [0.5ex] \hline 
+        86 & 0.61 & 16.787 & \texttt{vp-difference} & 200 & 100 & secure \\ \hline 
+        76 & 0.55 & 15.418 & \texttt{vp-difference} & 200 & 20 & robust \\ \hline 
+        85 & 0.53 & 15.547 & \texttt{vp-difference} & 200 & 100 & max \\ \hline 
+        87 & 0.53 & 16.245 & \texttt{vp-difference-relu} & 200 & 100 & max \\ \hline 
+        89 & 0.52 & 15.327 & \texttt{vp-difference-relu} & 200 & 100 & secure \\ \hline %[1ex] 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}%[h!]
+    \caption{\Eyrie{}'s top 5 MCTS variants}
+    \label{tab:ey-top5}
+    \centering
+    \begin{tabular}{| c || P{1.2cm} | P{1.2cm} || P{4cm} | P{1.2cm} | P{1.2cm} | P{1.2cm} |} 
+        \hline
+        \bf config no. & \bf  win rate & \bf average match length & \bf reward function & \bf expand count & \bf action count limit & \bf best action policy \\ [0.5ex] \hline 
+        184 & 0.81 & 14.519 & \texttt{vp-difference} & 200 & 20 & robust \\ \hline 
+        203 & 0.72 & 15.722 & \texttt{vp-difference} & 200 & 200 & secure \\ \hline 
+        194 & 0.71 & 15.690 & \texttt{vp-difference} & 200 & 100 & secure \\ \hline 
+        212 & 0.71 & 16.676 & \texttt{vp-difference} & 200 & -1 & secure \\ \hline 
+        202 & 0.71 & 15.803 & \texttt{vp-difference} & 200 & 200 & robust \\ \hline %[1ex] 
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Phase 2}
+Simulation on-going.
+
+
+
 % \begin{figure}
 %     \centering
 %     \begin{tikzpicture}

@@ -206,14 +206,14 @@ Finally, the best performing variant from each faction will be selected to be th
 
 \subsubsection{Phase 1}
 
-\textbf{Top 5 Variants}
+% \textbf{Top 5 Variants}
 
 In this section, parameters \texttt{rollout-no} and \texttt{time-limit} are not displayed in the tables as they are fixed to 1 and -1 (no-limit), respectively.
 
-The top 5 MCTS variants for \Marquise{} and \Eyrie{} are displayed in Table \
+The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base variant are displayed in Table \ref{tab:mar-top5} and \ref{tab:ey-top5}
 
 \begin{table}%[h!]
-    \caption{\Marquise{}'s top 5 MCTS variants}
+    \caption{\Marquise{}'s top 5 MCTS variants versus the base variant}
     \label{tab:mar-top5}
     \centering
     \begin{tabular}{| c || P{1.2cm} | P{1.2cm} || P{4cm} | P{1.2cm} | P{1.2cm} | P{1.2cm} |} 
@@ -229,7 +229,7 @@ The top 5 MCTS variants for \Marquise{} and \Eyrie{} are displayed in Table \
 \end{table}
 
 \begin{table}%[h!]
-    \caption{\Eyrie{}'s top 5 MCTS variants}
+    \caption{\Eyrie{}'s top 5 MCTS variants versus the base variant}
     \label{tab:ey-top5}
     \centering
     \begin{tabular}{| c || P{1.2cm} | P{1.2cm} || P{4cm} | P{1.2cm} | P{1.2cm} | P{1.2cm} |} 
@@ -239,15 +239,70 @@ The top 5 MCTS variants for \Marquise{} and \Eyrie{} are displayed in Table \
         203 & 0.72 & 15.722 & \texttt{vp-difference} & 200 & 200 & secure \\ \hline 
         194 & 0.71 & 15.690 & \texttt{vp-difference} & 200 & 100 & secure \\ \hline 
         212 & 0.71 & 16.676 & \texttt{vp-difference} & 200 & -1 & secure \\ \hline 
-        202 & 0.71 & 15.803 & \texttt{vp-difference} & 200 & 200 & robust \\ \hline %[1ex] 
+        202 & 0.71 & 16.803 & \texttt{vp-difference} & 200 & 200 & robust \\ \hline %[1ex] 
         \hline
     \end{tabular}
 \end{table}
 
+% \textbf{Observation: Imbalance in Potential}
+
+\Marquise{}'s win rate ranges from 0.52 to 0.61, while \Eyrie's ranges from 0.71 to 0.81. We speculated that this was due to the difference in ``potential'' between the two factions. \Marquise{}'s playstyle is straight forward because of the fixed action count per turn, while \Eyrie{} has the Decree, which dictates what actions the \Eyrie{} player can perform. The Decree, when built and followed properly, can grant the \Eyrie{} player over twice the action count per turn when compared to \Marquise{}, which grants more potential to earn VPs.
+
+% \textbf{Observation: Impact of each parameters}
+Speculation on the impact of each parameters:
+\begin{itemize}
+    \item Most variant has \texttt{vp-difference}-based reward function. We speculated that this is due to the \texttt{win} option only working if the simulation step reaches a game-ending state.
+    \item Every variant has expand count of 200. We speculated that if the MCTS is able to look forward further into the future and see more possible outcomes, it can then select better paths.
+    \item The action count limit of 100 is the majority for \Marquise{} while \Eyrie{} has a varying action count limit. We speculated that the action count limit does not necessarily need to be high, but it needs to be at the right value that represents the outcome of a series of actions from the root state. This is because if we look too far into the simulation, the outcomes might not represent our series of actions well, and if we look too close, the outcomes will only represent short-term rewards.
+    \item The best action policy also varies between variants. We speculated that each option for this parameter in itself does not impact much, but if combined with fitting options for other parameters, it can then shine.
+\end{itemize}
+
+
+
+
+
+
 \subsubsection{Phase 2}
-Simulation on-going.
 
+% \textbf{Top 1 Variants}
 
+In this section, parameters \texttt{rollout-no} and \texttt{time-limit} are not displayed in the tables as they are fixed to 1 and -1 (no-limit), respectively.
+
+The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the other faction's top 5 MCTS variants are displayed in Table \ref{tab:mar-team-rr} and \ref{tab:ey-team-rr}. The variant with highest win rate in each faction is highlighted in bold.
+
+\begin{table}%[h!]
+    \caption{\Marquise{}'s top 5 MCTS variants versus \Eyrie{}'s top 5 MCTS variants}
+    \label{tab:mar-team-rr}
+    \centering
+    \begin{tabular}{| c || P{1.2cm} | P{1.2cm} || P{4cm} | P{1.2cm} | P{1.2cm} | P{1.2cm} |} 
+        \hline
+        \bf config no. & \bf  win rate & \bf average match length & \bf reward function & \bf expand count & \bf action count limit & \bf best action policy \\ [0.5ex] \hline 
+        86 & 0.532 & 15.363 & \texttt{vp-difference} & 200 & 100 & secure \\ \hline 
+        76 & 0.390 & 15.727 & \texttt{vp-difference} & 200 & 20 & robust \\ \hline 
+        \bf 85 & \bf 0.560 & \bf 15.389 & \bf \texttt{vp-difference} & \bf 200 & \bf 100 & \bf max \\ \hline 
+        87 & 0.422 & 15.250 & \texttt{vp-difference-relu} & 200 & 100 & max \\ \hline 
+        89 & 0.374 & 15.230 & \texttt{vp-difference-relu} & 200 & 100 & secure \\ \hline %[1ex] 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}%[h!]
+    \caption{\Eyrie{}'s top 5 MCTS variants versus \Marquise{}'s top 5 MCTS variants}
+    \label{tab:ey-team-rr}
+    \centering
+    \begin{tabular}{| c || P{1.2cm} | P{1.2cm} || P{4cm} | P{1.2cm} | P{1.2cm} | P{1.2cm} |} 
+        \hline
+        \bf config no. & \bf  win rate & \bf average match length & \bf reward function & \bf expand count & \bf action count limit & \bf best action policy \\ [0.5ex] \hline 
+        \bf 184 & \bf 0.634 & \bf 13.681 & \bf \texttt{vp-difference} & \bf 200 & \bf 20 & \bf robust \\ \hline 
+        203 & 0.520 & 15.388 & \texttt{vp-difference} & 200 & 200 & secure \\ \hline 
+        194 & 0.580 & 15.217 & \texttt{vp-difference} & 200 & 100 & secure \\ \hline 
+        212 & 0.450 & 15.735 & \texttt{vp-difference} & 200 & -1 & secure \\ \hline 
+        202 & 0.538 & 15.517 & \texttt{vp-difference} & 200 & 200 & robust \\ \hline %[1ex] 
+        \hline
+    \end{tabular}
+\end{table}
+
+The variant with the highest win rate versus the other faction's top 5 MCTS variants for \Marquise{} is config number 85 with 0.560 win rate and 15.389 average match length. \Eyrie{}'s is config number 184 with 0.634 win rate and 13.681 average match length. 
 
 % \begin{figure}
 %     \centering

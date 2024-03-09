@@ -5,17 +5,15 @@
 \begin{abstractTH}
 เกมกระดาน ``รูท'' เป็นเกมแนวอสมมาตรที่สังเกตได้บางส่วน โดยผู้เล่นแต่เผ่าจะมีวิธีการเล่นเกมและเป้าหมายที่แตกต่างกัน รูทประกอบไปด้วยหลายเผ่าที่ผู้เล่นสามารถเล่นได้ แต่ละเผ่าจะมีวิธีการบรรลุเงื่อนไขการชนะของเกม ซึ่งก็คือการเก็บวิคทอรีพอยท์ (วีพี) ให้ได้ 30 หน่วย
 
-รูทเวอร์ชันวิดีโอเกมได้ถูกวางหน่ายในปี ค.ศ. 2020 แต่ผลตอบรับจากผู้เล่นและชุมชนออนไลน์ออกมาว่า ปัญญาประดิษฐ์ในวีดีเกมรูทนั้นไม่เก่งพอ ด้วยเหตุนี้ พวกเราจึงได้สร้างระบบปัญญาประดิษฐ์ที่สามารถเล่นเกมรูทได้ขึ้นมา ในแต่ละเฟสของเกม ปัญญาประดิษฐ์ของเราจะรับสถานะปัจจุบันของเกมแล้วเลือกแอคชันที่ควรทำอย่างชาญฉลาด เราได้สร้างปัญญาประดิษฐ์สำหรับ 2 เผ่าหลักของเกม ได้แก่ ``มาร์กีส์'' เดอ แคท และ ``อีรีย์'' ไดนาสตี โดยสร้างปัญญาประดิษฐ์ 1 ตัวต่อ 1 เผ่า
+รูทเวอร์ชันวิดีโอเกมได้ถูกวางหน่ายในปี ค.ศ. 2020 แต่ผลตอบรับจากผู้เล่นและชุมชนออนไลน์ออกมาว่า ปัญญาประดิษฐ์ในวิดีโอเกมรูทนั้นไม่เก่งพอ ด้วยเหตุนี้ พวกเราจึงได้สร้างระบบปัญญาประดิษฐ์ที่สามารถเล่นเกมรูทได้ขึ้นมา ในแต่ละเฟสของเกม ปัญญาประดิษฐ์ของเราจะรับสถานะปัจจุบันของเกมแล้วเลือกแอคชันที่ควรทำอย่างชาญฉลาด ในโครงการนี้ปัญญาประดิษฐ์สำหรับ 2 เผ่าหลักของเกม ได้แก่ ``มาร์กีส์'' เดอ แคท และ ``อีรีย์'' ไดนาสตี ปัญญาประดิษฐ์ 1 ตัวต่อ 1 เผ่า ได้ถูกสร้างขึ้น 
 
 อัลกอริธึมหลักที่จะในการสร้างปัญญาประดิษฐ์คือ ค้นหาต้นไม้มอนติคาร์โล อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลจะเพิ่มความน่าจะเป็นที่จะชนะให้มากที่สุด โดยการจำลองการเล่นหลายๆ ครั้ง และตัดสินใจเลือกวิธีเล่นที่ดีที่สุด
 
-อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลของเรามีพารามิเตอร์ทั้งหมด 6 ตัว ได้แก่ \texttt{reward-function}, \texttt{expand-count}, \texttt{rollout-no}, \texttt{time-limit}, \texttt{action-count-limit}, และ \texttt{best-action-policy} เราสร้างอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลขึ้นมา 108 รูปแบบสำหรับแต่ละเผ่าโดยการเปลี่ยนค่าพารามิเตอร์เหล่านี้
+อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลของโครงการนี้มีพารามิเตอร์ทั้งหมด 6 ตัว ได้แก่ \texttt{reward-function}, \texttt{expand-count}, \texttt{rollout-no}, \texttt{time-limit}, \texttt{action-count-limit}, และ \texttt{best-action-policy} เราสร้างอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลขึ้นมา 108 รูปแบบสำหรับแต่ละเผ่าโดยการเปลี่ยนค่าพารามิเตอร์เหล่านี้
 
-อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลทั้ง 108 รูปแบบถูกนำไปต่อสู้กับเผ่าคู่ต่อสู้ ที่จะใช้อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลรูปแบบพื้นฐาน รูปแบบที่มีอัตราการชนะสูงที่สุด 5 รูปแบบของแต่ละเผ่า จะถูกเลือกเพื่อนำไปต่อสู้กันเองต่อ ท้ายที่สุด จะได้รูปแบบอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลที่ดีที่สุดของแต่ละเผ่ามา
+อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลทั้ง 108 รูปแบบถูกนำไปต่อสู้กับเผ่าคู่ต่อสู้ ซึ่งจะใช้อัลกอริทึมค้นหาต้นไม้มอนติคาร์โลรูปแบบพื้นฐาน รูปแบบที่มีอัตราการชนะสูงที่สุด 5 รูปแบบของแต่ละเผ่า จะถูกเลือกเพื่อนำไปต่อสู้กันเองต่อ ท้ายที่สุด จะได้รูปแบบอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลที่ดีที่สุดของแต่ละเผ่ามา
 
-รูปแบบอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลที่ดีที่สุดของเผ่ามาร์กีส์ เดอ แคท มีค่าพารามิเตอร์ตามลำดับที่กล่าวด้านบนดังนี้: \texttt{vp-difference-relu}, \texttt{200}, \texttt{1}, \texttt{-1 (ไม่มีลิมิต)}, \texttt{-1 (ไม่มีลิมิต)}, และ \texttt{secure}โดยมีอัตราการชนะเฉลี่ยเมื่อสู้กับเผ่าอีรีย์ ไดนาสตี อยู่ที่ 60\%
-
-รูปแบบอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลที่ดีที่สุดของเผ่าอีรีย์ ไดนาสตี มีค่าพารามิเตอร์ตามลำดับที่กล่าวด้านบนดังนี้: \texttt{vp-difference-relu}, \texttt{200}, \texttt{1}, \texttt{-1 (ไม่มีลิมิต)}, \texttt{-1 (ไม่มีลิมิต)}, และ \texttt{secure}โดยมีอัตราการชนะเฉลี่ยเมื่อสู้กับเผ่ามาร์กีส์ เดอ แคท อยู่ที่ 60\%
+รูปแบบอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลที่ดีที่สุดของเผ่ามาร์กีส์ เดอ แคท มีค่าพารามิเตอร์ตามลำดับที่กล่าวด้านบนดังนี้: \texttt{vp-difference-relu}, \texttt{200}, \texttt{1}, \texttt{-1 (ไม่มีลิมิต)}, \texttt{-1 (ไม่มีลิมิต)}, และ \texttt{secure} โดยมีอัตราการชนะเฉลี่ยเมื่อสู้กับเผ่าอีรีย์ ไดนาสตี อยู่ที่ 56.0\% รูปแบบอัลกอริทึมค้นหาต้นไม้มอนติคาร์โลที่ดีที่สุดของเผ่าอีรีย์ ไดนาสตี มีค่าพารามิเตอร์ตามลำดับที่กล่าวด้านบนดังนี้: \texttt{vp-difference-relu}, \texttt{200}, \texttt{1}, \texttt{-1 (ไม่มีลิมิต)}, \texttt{-1 (ไม่มีลิมิต)}, และ \texttt{secure} โดยมีอัตราการชนะเฉลี่ยเมื่อสู้กับเผ่ามาร์กีส์ เดอ แคท อยู่ที่ 63.4\%
 
 % เป้าหมายของโครงการนี้คือ การพัฒนาระบบปัญญาประดิษฐ์ที่สามารถเล่นเกมกระดาน ``Root'' ได้อย่างชาญฉลาดและมีประสิทธิภาพ โดยระบบจะรับ state ปัจจุบันของเกม และทำการตัดสินใจเลือกทำ action ต่างๆในระหว่างการเล่น
 
@@ -41,18 +39,16 @@
 \begin{abstract}
 The board game called ``Root'' is a partially observable asymmetric game where each player has different game mechanics and goals. There are many factions within Root, each having its own way to achieve the victory condition of accumulating 30 victory points (VP). 
 
-A video game version of Root was released in 2020, but the feedback from the online community stated that the artificial intelligence (AI) in the \RootV{} is lacking and incompetent. Due to that reason, we developed an AI system capable of playing Root. The AI agents can take game state as input and make intelligent decisions in each phase. We made an AI agent for each of the 2 base factions: ``Marquise'' de Cat and the ``Eyrie'' Dynasties.
+A video game version of Root was released in 2020, but the feedback from the online community stated that the artificial intelligence (AI) in the \RootV{} is lacking and incompetent. Due to that reason, we developed an AI system capable of playing Root. The AI agents can take game state as input and make intelligent decisions in each phase. An AI agent for each of the 2 base factions: ``Marquise'' de Cat and the ``Eyrie'' Dynasties was made in this project.
 
 The main algorithm for implementing the AI is Monte Carlo Tree Search (MCTS). MCTS algorithm maximizes the probability of winning by simulating many rollouts and choosing the best decision.
 
-There are 6 parameters for the our MCTS algorithm: \texttt{reward-function}, \texttt{expand-count}, \texttt{rollout-no}, \texttt{time-limit}, \texttt{action-count-limit}, and \texttt{best-action-policy}. We created 108 MCTS agent variants for each faction by altering these parameters.
+There are 6 parameters for this project's MCTS algorithm: \texttt{reward-function}, \texttt{expand-count}, \texttt{rollout-no}, \texttt{time-limit}, \texttt{action-count-limit}, and \texttt{best-action-policy}. We created 108 MCTS agent variants for each faction by altering these parameters.
 
-The 108 variants are pitched against the other faction with the base variant. The top 5 variants with the highest win rate for each faction are selected. The 5 variants from each faction all play against each of the other faction's. The best variant for each faction is then selected.
+The 108 variants are pitched against the other faction with the base variant. The top 5 variants with the highest win rate for each faction are selected. The top 5 variants from each faction all play against each of the other faction's. The best variant for each faction is then selected.
 
 % TODO: add actual result and analysys
-The best MCTS variant for \Marquise{} have the following parameters respective to the above parameter list: \texttt{vp-difference-relu}, \texttt{200}, \texttt{1}, \texttt{-1 (no limit)}, \texttt{-1 (no limit)}, and \texttt{secure}. With average win rate against 5 \Eyrie{} agents of 60\%.
-
-The best MCTS variant for \Eyrie{} have the following parameters respective to the above parameter list: \texttt{vp-difference-relu}, \texttt{200}, \texttt{1}, \texttt{-1 (no limit)}, \texttt{-1 (no limit)}, and \texttt{secure}. With average win rate against 5 \Marquise{} agents of 60\%.
+The best MCTS variant for \Marquise{} has the following parameters respective to the above parameter list: \texttt{vp-difference}, \texttt{200}, \texttt{1}, \texttt{-1 (no limit)}, \texttt{100}, and \texttt{max}. With average win rate against top 5 \Eyrie{} agents of 56.0\%. The best MCTS variant for \Eyrie{} have the following parameters respective to the above parameter list: \texttt{vp-difference}, \texttt{200}, \texttt{1}, \texttt{-1 (no limit)}, \texttt{30}, and \texttt{robust}. With average win rate against top 5 \Marquise{} agents of 63.4\%.
 
 
 

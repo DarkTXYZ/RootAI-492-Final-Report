@@ -71,9 +71,9 @@ Finally, the best performing variant from each faction will be selected to be th
 
 \subsection{Introductory Experiment's Results}
 
-Figure \ref{fig:introductory-win} shows that the Marquise random agent outperforms the Eyrie random agent. This result proves our assumption that the Marquise faction is low-complexity, no-penalty gameplay mechanism that make it easier to score a victory point easier than the Eyrie faction. It corresponds to the fact that the mean victory point of the Marquise when losing is higher than that of Eyrie, as in Figure \ref{fig:introductory-loser-vp-dist}.
+Figure \ref{fig:introductory-win} shows that the Marquise random agent outperforms the Eyrie random agent. This result proves our assumption that the Marquise faction has a low-complexity, no-penalty gameplay mechanism that makes it easier to score a victory point than the Eyrie faction. It corresponds to the fact that the mean victory point of the Marquise when losing is higher than that of Eyrie, as in Figure \ref{fig:introductory-loser-vp-dist}.
 
-Figure \ref{fig:introductory-winner-turn-dist} shows that the average number of turns to win for Marquise and Eyrie is 30.45 and 30.25, respectively. We can establish the baseline performance of our AI model using this statistical data.
+Figure \ref{fig:introductory-winner-turn-dist} shows that the average number of turns to win for Marquise and Eyrie is 30.453 and 30.252, respectively. We can establish the baseline performance of our AI model using this statistical data.
 
 \begin{figure}[h!]
     \begin{center}
@@ -123,7 +123,7 @@ In this section, parameters \texttt{rollout-no} and \texttt{time-limit} are not 
 
 The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base variant are displayed in Table \ref{tab:mar-top5} and \ref{tab:ey-top5}
 
-\begin{table}%[h!]
+\begin{table}[h!]
     \caption{\Marquise{}'s top 5 MCTS variants versus the base variant}
     \label{tab:mar-top5}
     \centering
@@ -139,7 +139,7 @@ The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base 
     \end{tabular}
 \end{table}
 
-\begin{table}%[h!]
+\begin{table}[h!]
     \caption{\Eyrie{}'s top 5 MCTS variants versus the base variant}
     \label{tab:ey-top5}
     \centering
@@ -157,25 +157,16 @@ The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base 
 
 % \textbf{Observation: Imbalance in Potential}
 
-\Marquise{}'s win rate ranges from 0.52 to 0.61, while \Eyrie's ranges from 0.71 to 0.81. We speculated that this was due to the difference in ``potential'' between the two factions. \Marquise{}'s playstyle is straight forward because of the fixed action count per turn, while \Eyrie{} has the Decree, which dictates what actions the \Eyrie{} player can perform. The Decree, when built and followed properly, can grant the \Eyrie{} player over twice the action count per turn when compared to \Marquise{}, which grants more potential to earn VPs.
+\Marquise{}'s win rate ranges from 0.52 to 0.61, while \Eyrie's ranges from 0.71 to 0.81. We speculated that this was due to the difference in ``potential'' between the two factions. \Marquise{}'s playstyle is straight forward because of the fixed action count per turn, while \Eyrie{} has the Decree, which dictates what actions the \Eyrie{} player can perform. The Decree, when built and followed properly, can grant the \Eyrie{} player over twice the action count per turn when compared to \Marquise{}, which grants more potential to earn VPs while also punishing with lose of VPs if played incorrectly.
 
 % \textbf{Observation: Impact of each parameters}
 Speculation on the impact of each parameters:
 \begin{itemize}
-    \item Most variant has \texttt{vp-difference}-based reward function. We speculated that this is due to the \texttt{win} option only working if the simulation step reaches a game-ending state.
+    \item Most variant has \texttt{vp-difference}-based reward function. We speculated that this is due to the \texttt{win} option only working if the simulation step reaches a game-ending state and \texttt{vp-difference-relu} option not being able to differentiate a bad action from a very bad action.
     \item Every variant has expand count of 200. We speculated that if the MCTS is able to look forward further into the future and see more possible outcomes, it can then select better paths.
-    \item The action count limit of 100 is the majority for \Marquise{} while \Eyrie{} has a varying action count limit. We speculated that the action count limit does not necessarily need to be high, but it needs to be at the right value that represents the outcome of a series of actions from the root state. This is because if we look too far into the simulation, the outcomes might not represent our series of actions well, and if we look too close, the outcomes will only represent short-term rewards.
+    \item The action count limit of 100 is the majority for \Marquise{} while \Eyrie{} has a varying action count limit. We speculated that the action count limit does not necessarily need to be high, but it needs to be at the right value that represents the outcome of a series of actions from the root state.
     \item The best action policy also varies between variants. We speculated that each option for this parameter in itself does not impact much, but if combined with fitting options for other parameters, it can then shine.
 \end{itemize}
-
-\begin{figure}[h!]
-    \begin{center}
-      \includegraphics[width=\textwidth]{./images/fig-stage-1-avg-turn-dist.jpeg}
-    \end{center}
-    \caption{The distribution of number of turn to win for each faction}
-    \label{fig:stage-1-avg-turn-dist}
-\end{figure}
-
 
 \subsubsection{Phase 2}
 
@@ -185,7 +176,7 @@ In this section, parameters \texttt{rollout-no} and \texttt{time-limit} are not 
 
 The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the other faction's top 5 MCTS variants are displayed in Table \ref{tab:mar-team-rr} and \ref{tab:ey-team-rr}. The variant with highest win rate in each faction is highlighted in bold.
 
-\begin{table}%[h!]
+\begin{table}[h!]
     \caption{\Marquise{}'s top 5 MCTS variants versus \Eyrie{}'s top 5 MCTS variants}
     \label{tab:mar-team-rr}
     \centering
@@ -201,7 +192,7 @@ The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the other
     \end{tabular}
 \end{table}
 
-\begin{table}%[h!]
+\begin{table}[h!]
     \caption{\Eyrie{}'s top 5 MCTS variants versus \Marquise{}'s top 5 MCTS variants}
     \label{tab:ey-team-rr}
     \centering
@@ -217,6 +208,26 @@ The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the other
     \end{tabular}
 \end{table}
 
-The variant with the highest win rate versus the other faction's top 5 MCTS variants for \Marquise{} is config number 85 with 0.560 win rate and 15.389 average match length. \Eyrie{}'s is config number 184 with 0.634 win rate and 13.681 average match length. 
+The variant with the highest win rate versus the other faction's top 5 MCTS variants for \Marquise{} is config number 85 with 0.560 win rate and 15.389 average match length. \Eyrie{}'s is config number 184 with 0.634 win rate and 13.681 average match length.
+
+With the result of the best variants, we speculated that the \texttt{vp-difference} reward function is the best since it can fully represent both negative, positive, and neutral outcomes. The expand count of 200, which is highest amongs our setups, directly impacts the intelligence of the MCTS algorithm, but if it is too high, it will take too long to compute. The action count limit: for \Marquise{}, certain actions will show significant result after a while, such as building sawmills — you will get wood in later turns instead of the turn you build it. But for \Eyrie{}, every card added to the Decree will be effective immediately and every action will impact the close-future of that turn (and also far-future); A wrong action will quickly lead to a Turmoil for the Eyrie player. As for best action policies, we still cannot explain why \texttt{max} and \texttt{robust} are performing best for each faction, or if they has significant impact to the algorithm at all.
+
+\begin{figure}[h!]
+    \begin{center}
+      \includegraphics[width=\textwidth]{./images/fig-stage-2-marquise-win-rate.jpeg}
+    \end{center}
+    \caption{Top 5 Marquise variants win rate againts top 5 Eyrie variants: individual battle}
+    \label{fig:top-5-ma-wr-against-top-5-ey}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=\textwidth]{./images/fig-stage-2-eyrie-win-rate.jpeg}
+    \end{center}
+    \caption{Top 5 Eyrie variants win rate againts top 5 Marquise variants: individual battle}
+    \label{fig:top-5-ey-wr-against-top-5-ma}
+\end{figure}
+
+The win rate for \Marquise{} seems low, but if we look at individual battles in Figure \ref{fig:top-5-ma-wr-against-top-5-ey}, we can see that config 86 and 85 performed well; having won all \Eyrie{}'s configs except for config 184. In contrast for \Eyrie{} in Figure \ref{fig:top-5-ey-wr-against-top-5-ma}, only config 184 won all \Marquise{}'s configs while others lost to config 86 and 85.
 
 % TODO: add result graph

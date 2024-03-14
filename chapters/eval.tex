@@ -71,50 +71,33 @@ Finally, the best performing variant from each faction will be selected to be th
 
 \subsection{Introductory Experiment's Results}
 
-% \begin{figure}
-%     \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%             width  = 0.5*\textwidth,
-%             height = 8cm,
-%             major x tick style = transparent,
-%             ybar=2*\pgflinewidth,
-%             bar width=24pt,
-%             ymajorgrids = true,
-%             ylabel = {Number of Wins},
-%             symbolic x coords={Dominance Card,Victory Point},
-%             xtick = data,
-%             enlarge x limits=0.5,
-%             enlarge y limits=0.1,
-%             ymax = 1000,
-%             legend cell align=left,
-%             legend style={
-%                 at={(0.5,-0.15)},
-%                 anchor=north,
-%                 legend columns=-1
-%             },
-%             nodes near coords,
-%         ]
-%             \addplot[style={eyrie,fill=eyrie,mark=none}]
-%                 coordinates {(Dominance Card, 230) (Victory Point,44)};
-    
-%             \addplot[style={marquise,fill=marquise,mark=none}]
-%                  coordinates {(Dominance Card,695) (Victory Point,31)};
-    
-%             \legend{\Eyrie, \Marquise}
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{The number of wins grouped by winning condition}
-%     \label{fig:wins-by-winner-condition}
-% \end{figure}
+Figure \ref{fig:introductory-win} shows that the Marquise random agent outperforms the Eyrie random agent. This result proves our assumption that the Marquise faction is low-complexity, no-penalty gameplay mechanism that make it easier to score a victory point easier than the Eyrie faction. It corresponds to the fact that the mean victory point of the Marquise when losing is higher than that of Eyrie, as in Figure \ref{fig:introductory-loser-vp-dist}.
 
-\begin{figure}
+Figure \ref{fig:introductory-winner-turn-dist} shows that the average number of turns to win for Marquise and Eyrie is 30.45 and 30.25, respectively. We can establish the baseline performance of our AI model using this statistical data.
+
+\begin{figure}[h!]
     \begin{center}
-      \includegraphics[width=\textwidth]{./images/fig-random-random-win.jpeg}
+      \includegraphics[width=0.9\textwidth]{./images/fig-introductory-win.jpeg}
     \end{center}
-    \caption{The number of wins}
-    \label{fig:wins}
-  \end{figure}
+    \caption{The number of wins of each faction}
+    \label{fig:introductory-win}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]{./images/fig-introductory-winner-turn-dist.jpeg}
+    \end{center}
+    \caption{The distribution of the number of turns to win for each faction}
+    \label{fig:introductory-winner-turn-dist}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+      \includegraphics[width=\textwidth]{./images/fig-introductory-loser-vp-dist.jpeg}
+    \end{center}
+    \caption{The distribution of victory points for each faction when losing}
+    \label{fig:introductory-loser-vp-dist}
+\end{figure}
 
 % \subsubsection{High dominance card wins} \label{high-dominance-card-wins}
 % Dominance card wins happen way more often than victory points wins as seen in Figure \ref{fig:wins}. Our speculation is that it is the action generation in \RootOurs{} that makes the ``Activate Dominance Card'' action have a higher likelihood of being picked. \RootOurs{} generates actions in a manner that is more suitable for human players, e.g., in the move action, the agent needs to select a start clearing, then a destination clearing, and then how many warriors to move. These are done as three separate actions, while in reality, the action of ``Move X warriors from A to B'' should be counted as one action.
@@ -124,83 +107,11 @@ Finally, the best performing variant from each faction will be selected to be th
 
 % Additionally, games with \Marquise's dominance card wins take fewer turns, as seen in Figure \ref{fig:turns-to-dominance-win}. Which should be due to \Marquise \ starting with more clearings under control.
 
-\subsubsection{\Marquise's high victory points wins}
+% \subsubsection{\Marquise's high victory points wins}
 
 % \Eyrie \ have a higher chance to win with victory points as seen in Figure \ref{fig:wins}. Although there are not many data for rounds with victory points wins, our experience during development where we turned of the dominance card mechanics also have more \Eyrie \ victory points win. Our speculation is that this is due to \Eyrie's passive earning of victory points, all they need to do is protect their roosts and don't turmoil too much. In contrast, \Marquise \ needs to actively build buildings to earn victory points, which from the issue about action generation in Section \ref{high-dominance-card-wins}, action of building buildings might not have the correct likelihood of being picked.
 
 % Additionally, games with \Eyrie's victory points wins take more turns than those with \Marquise's, as seen in Figure \ref{fig:turns-to-vp-win}. Which should be due to \Eyrie \ having passive, continuous earning of victory points every turn while \Marquise's earnings is more like a burst of victory points every time they build a building.
-
-
-
-% \begin{figure}
-%     \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%             ytick={1,2},
-%             yticklabels={\Eyrie, \Marquise},
-%             xlabel={Number of Turns},
-%             ylabel={Faction},
-%             boxplot/draw direction=x,
-%         ]
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=42, 
-%                     upper quartile=59.5, 
-%                     lower quartile=30, 
-%                     upper whisker=304, 
-%                     lower whisker=14
-%                 }, eyrie, draw=eyrie
-%             ] coordinates {};
-
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=27.0, 
-%                     upper quartile=47.0, 
-%                     lower quartile=19.0, 
-%                     upper whisker=339.0, 
-%                     lower whisker=7.0
-%                 }, marquise, draw=marquise
-%             ] coordinates {};
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{Number of turns to achieve a dominance win}
-%     \label{fig:turns-to-dominance-win}
-% \end{figure}
-
-% \begin{figure}
-%     \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%             ytick={1,2,3,4},
-%             yticklabels={\Eyrie, \Marquise},
-%             xlabel={Number of Turns},
-%             ylabel={Faction},
-%             boxplot/draw direction=x,
-%         ]
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=33, 
-%                     upper quartile=42, 
-%                     lower quartile=26, 
-%                     upper whisker=58, 
-%                     lower whisker=18
-%                 }, eyrie, draw=eyrie
-%             ] coordinates {};
-
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=25.0, 
-%                     upper quartile=27.0, 
-%                     lower quartile=22.5, 
-%                     upper whisker=37.0, 
-%                     lower whisker=17.0
-%                 }, marquise, draw=marquise
-%             ] coordinates {};
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{Number of turns to achieve a victory points win}
-%     \label{fig:turns-to-vp-win}
-% \end{figure}
 
 \subsection{Main Experiment's Result}
 
@@ -257,9 +168,13 @@ Speculation on the impact of each parameters:
     \item The best action policy also varies between variants. We speculated that each option for this parameter in itself does not impact much, but if combined with fitting options for other parameters, it can then shine.
 \end{itemize}
 
-
-
-
+\begin{figure}[h!]
+    \begin{center}
+      \includegraphics[width=\textwidth]{./images/fig-stage-1-avg-turn-dist.jpeg}
+    \end{center}
+    \caption{The distribution of number of turn to win for each faction}
+    \label{fig:stage-1-avg-turn-dist}
+\end{figure}
 
 
 \subsubsection{Phase 2}
@@ -303,73 +218,5 @@ The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the other
 \end{table}
 
 The variant with the highest win rate versus the other faction's top 5 MCTS variants for \Marquise{} is config number 85 with 0.560 win rate and 15.389 average match length. \Eyrie{}'s is config number 184 with 0.634 win rate and 13.681 average match length. 
-
-% \begin{figure}
-%     \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%             ytick={1,2,3,4},
-%             yticklabels={\Eyrie, \Marquise},
-%             xlabel={Victory Points},
-%             ylabel={Faction},
-%             boxplot/draw direction=x,
-%         ]
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=30.0, 
-%                     upper quartile=31.0, 
-%                     lower quartile=30.0	, 
-%                     upper whisker=33, 
-%                     lower whisker=30
-%                 }, eyrie, draw=eyrie
-%             ] coordinates {};
-
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=13.0, 
-%                     upper quartile=15.25, 
-%                     lower quartile=11.0	, 
-%                     upper whisker=27, 
-%                     lower whisker=9
-%                 }, marquise, draw=marquise
-%             ] coordinates {};
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{Number of Victory Points when \Eyrie{} wins}
-% \end{figure}
-
-% \begin{figure}
-%     \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%             ytick={1,2,3,4},
-%             yticklabels={\Eyrie, \Marquise},
-%             xlabel={Victory Points},
-%             ylabel={Faction},
-%             boxplot/draw direction=x,
-%         ]
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=6.0, 
-%                     upper quartile=11.0, 
-%                     lower quartile=4.0, 
-%                     upper whisker=21, 
-%                     lower whisker=2
-%                 }, eyrie, draw=eyrie
-%             ] coordinates {};
-
-%             \addplot+[
-%                 boxplot prepared={
-%                     median=30.0, 
-%                     upper quartile=32, 
-%                     lower quartile=30.0	, 
-%                     upper whisker=33, 
-%                     lower whisker=30
-%                 }, marquise, draw=marquise
-%             ] coordinates {};
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{Number of Victory Points when \Marquise{} wins by victory points condition}
-% \end{figure}
 
 % TODO: add result graph

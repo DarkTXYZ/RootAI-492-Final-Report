@@ -171,7 +171,7 @@ The simulation result is ``backed up'' (i.e. backpropagated) through the selecte
 Maintaining a balance between exploration and exploitation is an important part of implementing decision-making algorithms such as MCTS. During MCTS processes, all nodes have some chance of being randomly picked, which allows new decisions to be made so that new and better outcomes can be discovered. This is called exploration. At the same time, nodes that lead to a winning state will have a higher chance of being picked again in subsequent \glspl{playout}. This is called exploitation.
 
 \subsection{UCB policy}
-One of the most commonly used tree policies in MCTS is UCB (Upper Confidence Bound) \cite{RN2020}. As UCB is used in bandit problems, the process in selection phase can be modelled as a multi-armed bandit problem. A child node j is selected to maximize:
+One of the most commonly used tree policies in MCTS is UCB (Upper Confidence Bound) \cite{RN2020}. As UCB is commonly used in \gls{multi-armed-bandit-problem}, the process in selection phase can be modelled accordingly. A child node j is selected to maximize:
 
 \begin{equation}
   \label{eq:UCB}

@@ -1,6 +1,6 @@
 \chapter{\ifenglish Background Knowledge and Theory\else ทฤษฎีที่เกี่ยวข้อง\fi}
 
-In order to create the AI, we first need to implement \RootOurs{}. This requires knowledge of game programming fundamentals and extensive knowledge of the rules of \RootB{}. However, there are minor rule differences between \RootV{} and \RootB{}. Since \RootV{}`s AIs are the root cause of our project, we also need to find and implement these minor differences in our \RootOurs{}.
+In order to create the AI, \RootOurs{} must be implemented first. This requires knowledge of game programming fundamentals and extensive knowledge of the rules of \RootB{}. However, there are minor rule differences between \RootV{} and \RootB{}. Since \RootV{}`s AIs are the root cause of our project, these minor differences need to be considered when implementing \RootOurs{}.
 
 The next step is to implement \RootAI{}, the framework for running \RootOurs{} and training AI agents. There are two AI agent implementation methods that require additional self-study: Monte Carlo tree search and reinforcement learning neural networks.
 
@@ -35,7 +35,7 @@ Each player will take his turn throughout three phases: birdsong, daylight, and 
   \item \textbf{Battle}: Choose a clearing where you have warriors as the clearing of battle. You are the attacker. Choose another player in the clearing of battle to be the defender. Roll two dice. The attacker deals hits equal to the higher roll, and the defender deals hits equal to the lower roll. Both players deal hits simultaneously and remove pieces equal to the number of hits they receive.
 \end{enumerate}
 
-Other than key actions, there will be some specific actions belonging to each faction. We will describe them in detail with an explanation of how each phase of each faction works in Tables \ref{tab:marquise-flow} and \ref{tab:eyrie-flow}.
+Other than key actions, there will be some specific actions belonging to each faction. They will be described in detail with an explanation of how each phase of each faction works in Tables \ref{tab:marquise-flow} and \ref{tab:eyrie-flow}.
 
 Some of the rules will not be explained here, as they are not crucial or essential. For more details on rules, see \cite{RootBoardGameRules}.
 
@@ -150,7 +150,7 @@ Monte Carlo tree search (MCTS) \cite{Bradberry_Jeff-2015} is a search algorithm 
 
 \begin{figure}
   \begin{center}
-    \includegraphics[width=\textwidth]{mcts-steps.jpg}
+    \includegraphics[width=\textwidth]{images/mcts-steps.jpg}
   \end{center}
   \caption{MCTS steps, credit to \cite{mcts-survey}}
   \label{fig:mcts-steps}
@@ -194,7 +194,7 @@ MCTS continues to run four steps until the endgame condition is met or the compu
 
 % TODO: add citations to MCTS wikipedia
 
-\subsection{MCTS with imperfect information game and uncertainty}
+\subsection{MCTS with imperfect information game and uncertainty} \label{handling-uncertainty}
 
 In a deterministic game, MCTS can generate future states in nodes that will be found when performing an action. This is called a Closed Loop MCTS \cite{Perez_Liebana_2015}. But when nondeterministic actions come into concern, such as rolling dice or drawing random cards, we can still use a Closed Loop MCTS to generate all available possible outcomes as states and play out each one. However, it should be noted that this approach will make the game tree grows exponentially. 
 

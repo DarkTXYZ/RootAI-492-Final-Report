@@ -2,7 +2,7 @@
 
 \section{\ifenglish Conclusions\else สรุปผล\fi}
 
-An online forum discussion (and our personal experiences) stated that, a normal game of Root lasts 7-10 rounds \cite{Reddit_TurnsToWin}. For a 2 players scenario, this is around 14-20 turns. Comparing that to our best performing MCTS AI agents which have 15.389 and 13.681 average turns to end (average match length), \Marquise{} and \Eyrie{}, respectively. We have concluded that our MCTS AI agents are able to intelligently play \RootB{}.
+An online forum discussion (and our personal experiences) stated that, a normal game of Root lasts 7-10 rounds \cite{Reddit_TurnsToWin}. For a 2 players scenario, this is around 14-20 turns. Comparing that to our best performing MCTS AI agents which have 15.389 and 13.681 average turns to end (average match length), \Marquise{} and \Eyrie{}, respectively. The result concluded that MCTS AI agents are able to intelligently play \RootB{}.
 
 The best MCTS variant for \Marquise{} is from config number 85. It achieved average win rate against top 5 \Eyrie{} agents of 56.0\%. It has the following parameters:
 \begin{itemize}
@@ -26,9 +26,9 @@ The best MCTS variant for \Eyrie{} is from config number 184. It achieved averag
 \section{\ifenglish Challenges\else ปัญหาที่พบและแนวทางการแก้ไข\fi}
 
 \begin{itemize}
-    \item We understimated the complexity of \RootB{}. We estimated to complete the core implementation of \RootOurs{} within 3 weeks but it has taken us 3 months. We should give more consideration to carefully estimating the size of the tasks so that we can better plan out the project.
-    \item For the MCTS algorithm to be intelligent, it must be able to look deep into multiple possibilities. To achieve this level of intelligence in an acceptable amount of time requires a high amount of computation budget. The department's server, which has a lot of CPU cores, along with us reducing the number of variants to half, helped us achieve that. Otherwise, we wouldn't have been able to simulate as many battles as we did. This is another lesson in planning for a project that requires processing power; you need a lot of processing power if you don't want to spend a lot of time.
-    \item This project is more of a research-style than a software-development project. We have never done a project in this manner before and this is our first time doing it like this. We gained lots of experience from this.
+    \item We underestimated the complexity of \RootB{}. We estimated completing the core implementation of \RootOurs{} within 3 weeks but it has taken us 3 months. We should give more consideration to carefully estimating the size of the tasks so that we can better plan out the project.
+    \item For the MCTS algorithm to be intelligent, it must be able to look deep into multiple possibilities. To achieve this level of intelligence in an acceptable amount of time requires a high computation budget. The department's server, which has a lot of CPU cores, along with us reducing the number of variants to half, helped us achieve that. Otherwise, we wouldn't have been able to simulate as many battles as we did. This is another lesson in planning for a project that requires processing power; you need a lot of processing power if you don't want to spend a lot of time.
+    \item This project is more of a research style than a software-development project. We have never done a project in this manner before, and this is our first time doing it like this. We gained lots of experience from this.
 \end{itemize}
 
 \section{\ifenglish%
@@ -39,9 +39,9 @@ Suggestions and further improvements
 }
 
 \begin{itemize}
-    \item To connect \RootAI{} to an instance of \RootV{} and have the AIs play against each other will be the ultimate testing method of whether our AI is better than \RootV{}'s AI. 
+    \item To connect \RootAI{} to an instance of \RootV{} and have the AIs play against each other will be the ultimate testing method for determining whether our AI is better than \RootV{}'s AI. 
     \item AIs for \RootB{} can be implemented using other methods such as reinforcement learning, artificial neural networks, etc.
-    \item If the user interface is made with something else such as a game engine, human players would be able to play \RootOurs{} more easily then the current method of arrow keys and spacebar. Though doing that would require more time actually developing it and connecting to the logic code.
+    \item If the user interface is made with something else such as a game engine, human players would be able to play \RootOurs{} more easily than with the current method of arrow keys and spacebar. Though doing that would require more time actually developing it and connecting to the logic code.
     \item This project does not need to be written in Python. It was written in Python because our original scope includes reinforcement learning with neural network, which we planned to use PyTorch and/or Tensorflow in those parts.
     \item There could be a better reward function.
 \end{itemize}

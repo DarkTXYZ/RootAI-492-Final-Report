@@ -3,17 +3,17 @@
 \section{\ifenglish Project rationale\else ที่มาของโครงงาน\fi}
 Artificial intelligence (AI) has revolutionized the world of video games by giving players friends to play with or foes to play against. The digital adaptation video game of the \RootB{} is no exception. But there are problems with the AIs. There are multiple reports by \RootV{} players that the AIs are no longer challenging to play against once you start to know how to play your faction or that the AIs make awful decisions that no humans would ever make in a similar situation \cite{Steam_Review1} \cite{Steam_Review2} \cite{Reddit_AIInThisGameTooEasy}.
 
-This project focuses on the recommended scenario in a two-player game of \Marquise{} faction versus \Eyrie{} faction since they are both empire factions, i.e., factions with many buildings and warriors on the board, thus making this scenario have a lot of interactions.
+This project focuses on the recommended scenario in a two-player game of \Marquise{} faction versus \Eyrie{} faction since they are both empire factions, i.e., factions with many buildings and warriors on the board. This scenario is suggested because it leads to many interactions.
 
 %%%%%
 %
 % Maybe we should move this paragraph vvv to background chapter 
 %
-\Marquise{} requires players to balance building types to be able to continuously grow and earn points, while \Eyrie{} requires players to carefully build and follow \textit{the Decree}, which can get very powerful, but failing to follow it will result in a setback in the form of losing points. The relevant rules of Root will be explained in this document.
+\Marquise{} requires players to balance building types to be able to continuously grow and earn points, while \Eyrie{} requires players to carefully build and follow \textit{the Decree}, which can get very powerful, but failing to follow it will result in a setback in the form of losing points. The relevant rules of Root will be explained in Section \ref{brief-rules-of-root}.
 %
 %%%%%
 
-The goal is to develop an artificial intelligence (AI) system capable of playing the board game ``Root''. The objective is to create an intelligent agent that can take game state as input and make intelligent decisions in each phase. The agents will be built using Monte Carlo Tree Search algorithm, and uniform random method. Full details on each AI agent implementation method and their concepts are explained in this document.
+The goal is to develop an artificial intelligence (AI) system capable of playing the board game ``Root''. The objective is to create an intelligent agent that can take game state as input and make intelligent decisions in each phase. The agents will be built using Monte Carlo Tree Search algorithm, and uniform random method. Full details on each AI agent implementation method and their concepts are explained in Section \ref{ch3-root-trainer}.
 
 % Root features a variety of factions, each with its unique gameplay mechanics and goals. 
 
@@ -33,7 +33,7 @@ The goal is to develop an artificial intelligence (AI) system capable of playing
 
 \section{\ifenglish Project scope\else ขอบเขตของโครงงาน\fi}
 % TODO: should i use AI agent training wrapper? training framework? training lifecycle?
-The project is a software consisting of two main components: 1.) \textit{\RootOurs{}}, a minimal version of \RootV{}. 2.) \textit{\RootAI{}}, an AI agent framework for \RootOurs{}. The scope of the project are as follows:
+The project is a software consisting of two main components: 1.) \textit{\RootOurs{}}, a minimal version of \RootV{}. 2.) \textit{\RootAI{}}, an AI agent framework for \RootOurs{}. The scopes of the project are as follows:
 \begin{enumerate}
     \item Implementation of \RootOurs{}.
     \item Implementation of \RootAI{}.
@@ -73,8 +73,8 @@ The project is a software consisting of two main components: 1.) \textit{\RootOu
 \section{\ifenglish Expected outcomes\else ประโยชน์ที่ได้รับ\fi}
 An AI for each faction that excels at playing as that faction is created, i.e.:
 \begin{itemize}
-    \item One of the variants for \Marquise{} AI have higher average win rate   against all other \Eyrie{} AI variants
-    \item One of the variants for \Eyrie{} AI have higher average win rate against all other \Marquise{} AI variants
+    \item One of the variants for \Marquise{} AI has higher average win rate   against all other \Eyrie{} AI variants
+    \item One of the variants for \Eyrie{} AI has higher average win rate against all other \Marquise{} AI variants
 \end{itemize}
 
 \section{\ifenglish Technology and tools\else เทคโนโลยีและเครื่องมือที่ใช้\fi}
@@ -127,4 +127,4 @@ Impacts of this project on society, health, safety, legal, and cultural issues
 \else%
 ผลกระทบด้านสังคม สุขภาพ ความปลอดภัย กฎหมาย และวัฒนธรรม
 \fi}
-This project can work as an improvement and foundation for future research on game AI and other related topics. Furthermore, this project can be used to implement practical AI and integrate it into the \RootV, enhancing the gameplay experience and making the gameplay more challenging.
+This project can work as an improvement and foundation for future research on game AI and other related topics. Furthermore, this project can be used to implement practical AI and can be integrated it into the \RootV, enhancing the gameplay experience and making the gameplay more challenging.

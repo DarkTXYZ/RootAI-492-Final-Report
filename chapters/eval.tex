@@ -109,7 +109,7 @@ Figure \ref{fig:introductory-winner-turn-dist} shows that the average number of 
 
 In this section, parameters \texttt{rollout-no} and \texttt{time-limit} are not displayed in the tables as they are fixed to 1 and -1 (no-limit), respectively.
 
-The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base variant are displayed in Table \ref{tab:mar-top5} and \ref{tab:ey-top5}
+The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base variant are displayed in Table \ref{tab:mar-top5} and \ref{tab:ey-top5}. Also, the win rate of all configurations are shown in \ref{fig:stage-1-win-rate-dist}.
 
 \begin{table}[h!]
     \caption{\Marquise{}'s top 5 MCTS variants versus the base variant}
@@ -142,6 +142,15 @@ The results of top 5 MCTS variants for \Marquise{} and \Eyrie{} versus the base 
         \hline
     \end{tabular}
 \end{table}
+
+\begin{figure}[h!]
+    \begin{center}
+      \includegraphics[width=\textwidth]{./images/fig-stage-1-win-rate-dist.jpeg}
+    \end{center}
+    \caption{The distribution of win rates for all MCTS configurations of each faction}
+    \label{fig:stage-1-win-rate-dist}
+\end{figure}
+
 
 % \textbf{Observation: Imbalance in Potential}
 

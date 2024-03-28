@@ -780,7 +780,7 @@
   }%
 }
 \ifglossary
-  \RequirePackage[toc,numberline]{glossaries}
+  \RequirePackage[toc]{glossaries}
   \makeglossaries
 
   \newcommand{\glossarypage}{%

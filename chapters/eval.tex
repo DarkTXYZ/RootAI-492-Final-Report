@@ -12,9 +12,9 @@
 
 % ในบทนี้จะทดสอบเกี่ยวกับการทำงานในฟังก์ชันหลักๆ
 
-\section{Experiment Setup}
+\section{Experiment setup}
 
-\subsection{Introductory Experiment}
+\subsection{Introductory experiment}
 For the introductory experiment, Random agent is used as it has the most basic implementation. The experiments will be conducted by simulating \RootOurs \ with random actions option turned on, and collect the results. 
 
 We will run 100,000 \glspl{playout} using a random decision agent as each faction and collect the following statistics:
@@ -27,7 +27,7 @@ We will run 100,000 \glspl{playout} using a random decision agent as each factio
     \item victory points of \Eyrie{} when the game ends
 \end{itemize}
 
-\subsection{Main Experiment}
+\subsection{Main experiment}
 The main experiment will be conducted on multiple variants of MCTS agent to find the ``best MCTS variant'' for each faction. This experiment consists of two phases. 
 
 \subsubsection{Setup} \label{main-exp-setup}
@@ -71,7 +71,7 @@ Finally, the best performing variant from each faction will be selected to be th
 
 \section{Results}
 
-\subsection{Introductory Experiment's Results}
+\subsection{Introductory experiment's results}
 
 Figure \ref{fig:introductory-win} indicates that the Marquise random agent outperformed the Eyrie random agent. This result proves our assumption that the Marquise faction has a low-complexity, no-penalty gameplay mechanism that makes it easier to score a victory point than the Eyrie faction does. This corresponds to the fact that the mean victory point of the Marquise when losing is higher than that of Eyrie, as shown in Figure \ref{fig:introductory-loser-vp-dist}.
 
@@ -101,7 +101,7 @@ Figure \ref{fig:introductory-winner-turn-dist} shows that the average number of 
     \label{fig:introductory-loser-vp-dist}
 \end{figure}
 
-\subsection{Main Experiment's Result}
+\subsection{Main experiment's result}
 
 \subsubsection{Phase 1}
 

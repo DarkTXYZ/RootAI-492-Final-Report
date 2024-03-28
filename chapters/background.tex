@@ -1,8 +1,8 @@
 \chapter{\ifenglish Background Knowledge and Theory\else ทฤษฎีที่เกี่ยวข้อง\fi}
 
-In order to create the AI, \RootOurs{} must be implemented first. This requires knowledge of game programming fundamentals and extensive knowledge of the rules of \RootB{}. However, there are minor rule differences between \RootV{} and \RootB{}. Since \RootV{}`s AIs are the root cause of our project, these minor differences need to be considered when implementing \RootOurs{}.
+In order to create the AI, \RootOurs{} must be implemented first. This requires knowledge of game programming fundamentals and extensive knowledge of the rules of \RootB{}. However, there are minor rule differences between \RootV{} and \RootB{}. Since \RootV{}'s AIs are the root cause of our project, these minor differences need to be considered when implementing \RootOurs{}.
 
-The next step is to implement \RootAI{}, the framework for running \RootOurs{} and training AI agents. There are two AI agent implementation methods that require additional self-study: Monte Carlo tree search and reinforcement learning neural networks.
+The next step is to implement \RootAI{}, the framework for running \RootOurs{} and interacting with AI agents. One of the two AI agent implementation methods requires additional self-study: Monte Carlo tree search.
 
 \section{Root}
 Root is an \textbf{asymetric game}: a game where each player starts with different setups, gameplay mechanics, etc. \cite{Mike_Shor-2023-10-06}. Although Root's base actions, such as move and battle, are the same for every faction, each faction starts differently, and each has its own unique mechanics and rules. Thus, Root sits closer to the asymmetric side in the symmetric-asymmetric spectrum. \\
@@ -11,7 +11,7 @@ Examples of other asymmetric games are Tapestry, Dune, Cthulhu Wars, etc.
 
 Root is an \textbf{imperfect information game}: a game where there is information hidden from the player \cite{osborne1994course}. Most elements of Root, such as warrior placement, building count, etc., are laid out for all players to see. But cards on the player's hand are only visible to that player, i.e., other players' cards in hand are the hidden information in this game.
 
-Root is a \textbf{non-deterministic game}: a game where there is some element of randomness involved, such as rolling dice or shuffling cards. Root has both, rolling dice in battle and drawing cards from a shuffled draw pile.
+Root is a \textbf{non-deterministic game}: a game where there is some elements of randomness involved, such as rolling dice or shuffling cards. Root has both, rolling dice in battle and drawing cards from a shuffled draw pile.
 
 \subsection{Brief rules of Root} \label{brief-rules-of-root}
 
@@ -129,7 +129,7 @@ Some of the rules will not be explained here, as they are not crucial or essenti
 
 In \RootB, \Marquise's Field Hospital ability can be triggered at anytime the \Marquise{} warriors are removed from the board. But in the \RootV, this ability can only be triggered when in \Marquise's turn.
 
-Also, \Marquise{} is not able to choose which wood is spent on building. In \RootV, wood is automatically removed from the board by removing the wood that is closest to the Keep first. 
+Also, \Marquise{} is not able to choose which wood is spent on building. In \RootV, wood is automatically removed from the board by removing the wood that is closest to the Keep first. \RootOurs{}'s implementation follows this rule.
 
 \section{Game tree}
 A \gls{game-tree} is a directed graph that represents possible game states and decisions within a game. Each node represents a state of the game, and each outgoing edge represents a decision at that state (node), which will lead to another state (node). The size of the game tree can be used to measure the complexity of a game, as it represents all the possible ways a game can pan out.
@@ -178,7 +178,7 @@ One of the most commonly used tree policies in MCTS is UCB (Upper Confidence Bou
   \mathrm{UCB} = \overline{X}_j + 2C_p\sqrt{\frac{2\ln n}{n_j}} 
 \end{equation}
 
-where $n$ is the number of times a parent node has visited, $n_j$ is the number of times a child node has visited, $X_j$ is the average reward of the parent node, and $C_p > 0$ is a constant.
+where $n$ is the number of times a parent node has visited, $n_j$ is the number of times a child node has visited, $\overline{X}_j$ is the average reward of the parent node, and $C_p > 0$ is a constant.
 
 In (\ref{eq:UCB}), the two terms are the exploitation term and the exploration term, respectively. If a node has been explored a few times, the exploration term will be high as a denominator $n_j$. $C_p$ is a constant that balances between exploitation and exploration.
 
